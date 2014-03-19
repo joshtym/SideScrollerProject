@@ -3,7 +3,7 @@
 
 #include "ScreenManager.h"
 
-class SplashScreen : public GameScreen
+class SplashScreen : public GameScreenInterface
 {
 	private:
 		ALLEGRO_FONT *font;

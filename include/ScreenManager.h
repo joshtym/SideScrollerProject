@@ -1,7 +1,7 @@
 #ifndef SCREENMANAGER_H
 #define SCREENMANAGER_H
 
-#include "GameScreen.h"
+#include "GameScreenInterface.h"
 #include <iostream>
 
 // Allegro Inits
@@ -26,7 +26,7 @@ class ScreenManager
 		~ScreenManager();
 		static ScreenManager &GetInstance();
 		void Initialize();
-		void addScreen(GameScreen *screen);
+		void addScreen(GameScreenInterface *screen);
 		void loadContent();
 		void update(ALLEGRO_EVENT ev);
 		void draw(ALLEGRO_DISPLAY *display);

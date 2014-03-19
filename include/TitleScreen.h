@@ -4,7 +4,7 @@
 #include "ScreenManager.h"
 #include "InputManager.h"
 
-class TitleScreen : public GameScreen
+class TitleScreen : public GameScreenInterface
 {
 	private:
 		ALLEGRO_FONT *font;

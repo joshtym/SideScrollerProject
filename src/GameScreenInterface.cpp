@@ -1,25 +1,25 @@
-#include "GameScreen.h"
+#include "GameScreenInterface.h"
 
-GameScreen::GameScreen()
+GameScreenInterface::GameScreenInterface()
 {
 }
 
-GameScreen::~GameScreen()
+GameScreenInterface::~GameScreenInterface()
 {
 }
 
-void GameScreen::loadContent()
+void GameScreenInterface::loadContent()
 {
 }
 
-void GameScreen::unloadContent()
+void GameScreenInterface::unloadContent()
 {
 }
 
-void GameScreen::updateContent()
+void GameScreenInterface::updateContent()
 {
 }
 
-void GameScreen::draw(ALLEGRO_DISPLAY *disp)
+void GameScreenInterface::draw(ALLEGRO_DISPLAY *disp)
 {
 }

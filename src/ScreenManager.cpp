@@ -2,7 +2,7 @@
 #include "TitleScreen.h"
 #include "SplashScreen.h"
 
-GameScreen *currentScreen, *newScreen;
+GameScreenInterface *currentScreen, *newScreen;
 
 ScreenManager::ScreenManager()
 {
@@ -31,7 +31,7 @@ void ScreenManager::Initialize()
 	currentScreen = new TitleScreen();
 }
 
-void ScreenManager::addScreen(GameScreen *screen)
+void ScreenManager::addScreen(GameScreenInterface *screen)
 {
 	newScreen = screen;
 	currentScreen->unloadContent();

@@ -3,7 +3,7 @@ LIBDIR = -L ../libs/allegro5/lib -L /usr/lib
 INCLUDEDIRS = -I ../include/
 OBJDIR = ../obj/
 LNFLAGS = -lallegro -lallegro_primitives -lallegro_font -lallegro_audio -lallegro_ttf -lallegro_acodec -lallegro_dialog -lallegro_image
-OBJECTS = GameScreenInterface.o InputManager.o ScreenManager.o main.o TitleScreen.o SplashScreen.o
+OBJECTS = GameScreenInterface.o InputManager.o ScreenManager.o main.o TitleScreen.o SplashScreen.o Display.o
 OBJS = $(addprefix $(OBJDIR), $(OBJECTS))
 EXECUTALBE = ../sideScroller
 

@@ -1,7 +1,15 @@
 #include "ScreenManager.h"
 #include "InputManager.h"
+#include "Display.h"
 #include <iostream>
 #include <vector>
+
+#include <allegro5/allegro_native_dialog.h>
+#include <allegro5/allegro_image.h>
+#include <allegro5/allegro_audio.h>
+#include <allegro5/allegro_acodec.h>
+#include <allegro5/allegro_font.h>
+#include <allegro5/allegro_ttf.h>
 
 int main()
 {
@@ -11,8 +19,9 @@ int main()
 	screenWidth = 800;
 	screenHeight = 600;
 	const double FPS = 60;
+	Display d(800, 600);
 	
-	if (!al_init())
+	/*if (!al_init())
 	{
 		al_show_native_message_box(0, "Error", "Error",
 		"Cannot Initialize Allegro", 0, 0);
@@ -38,7 +47,7 @@ int main()
 	al_init_acodec_addon();
 	
 	al_init_font_addon();
-	al_init_ttf_addon();
+	al_init_ttf_addon();*/
 	
 	ALLEGRO_TIMER *timer = al_create_timer (1.0 / FPS);
 	ALLEGRO_EVENT_QUEUE *event_queue = al_create_event_queue();
@@ -46,7 +55,7 @@ int main()
 	
 	al_register_event_source(event_queue, al_get_keyboard_event_source());
 	al_register_event_source(event_queue, al_get_timer_event_source(timer));
-	al_register_event_source(event_queue, al_get_display_event_source(display));
+	al_register_event_source(event_queue, al_get_display_event_source(d.getAllegroDisplay()));
 	
 	bool completed = false;
 	
@@ -74,7 +83,7 @@ int main()
 		
 		std::cout << "3!" << std::endl;
 		ScreenManager::GetInstance().update(ev);
-		ScreenManager::GetInstance().draw(display);
+		ScreenManager::GetInstance().draw(d.getAllegroDisplay());
 		
 		std::cout << "4!" << std::endl;
 		al_flip_display();
@@ -82,7 +91,7 @@ int main()
 		std::cout << "5!" << std::endl;
 	}
 	
-	al_destroy_display(display);
+	//al_destroy_display(display);
 	al_destroy_timer(timer);
 	al_destroy_event_queue(event_queue);
 	

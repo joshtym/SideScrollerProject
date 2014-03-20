@@ -9,11 +9,12 @@ Player::Player()
  
 Player::~Player()
 {
-	 al_destroy_bitmap(playerBitmap);
 	 
- }
- 
-Player::move(ALLEGRO_EVENT e)
+	 
+}
+
+
+void Player::move(ALLEGRO_EVENT e)
 {
 
 
@@ -36,9 +37,14 @@ Player::move(ALLEGRO_EVENT e)
 	
 }
  
-Player::LoadPlayer()
+void Player::loadPlayer()
 {
 	playerBitmap = al_load_bitmap("player.bmp");
+}
+
+void Player::unloadPlayer()
+{
+	al_destroy_bitmap(playerBitmap);
 }
 
 void Player::draw()

@@ -9,7 +9,8 @@ class Player {
 	public:
 		Player();
 		~Player();
-		void LoadPlayer();
+		void loadPlayer();
+		void unloadPlayer();
 		
 	private:
 		ALLEGRO_BITMAP *playerBitmap;
@@ -18,7 +19,7 @@ class Player {
 		int speed = 5;
 		
 	public:
-		move(ALLEGRO_EVENT);
+		void move(ALLEGRO_EVENT);
 		void draw();
 };
 

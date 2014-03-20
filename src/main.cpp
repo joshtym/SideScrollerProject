@@ -53,6 +53,8 @@ int main()
 		
 		if (ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
 			completed = true;
+	
+		
 		
 		ScreenManager::GetInstance().update(ev);
 		ScreenManager::GetInstance().draw(d.getAllegroDisplay());

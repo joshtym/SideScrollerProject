@@ -53,20 +53,14 @@ int main()
 		
 		if (ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
 			completed = true;
-			
-		if (input.isKeyPressed(ev, ALLEGRO_KEY_E))
-			ScreenManager::GetInstance().addScreen(new TitleScreen());
 		
-		if (input.isKeyPressed(ev, ALLEGRO_KEY_R))
-			ScreenManager::GetInstance().addScreen(new SplashScreen());
-		//ScreenManager::GetInstance().update(ev);
+		ScreenManager::GetInstance().update(ev);
 		ScreenManager::GetInstance().draw(d.getAllegroDisplay());
 		
 		al_flip_display();
 		al_clear_to_color(al_map_rgb(0, 0, 0));
 	}
 	
-	//al_destroy_display(display);
 	al_destroy_timer(timer);
 	al_destroy_event_queue(event_queue);
 	

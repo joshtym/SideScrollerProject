@@ -16,7 +16,7 @@ void GameScreenInterface::unloadContent()
 {
 }
 
-void GameScreenInterface::updateContent()
+void GameScreenInterface::updateContent(ALLEGRO_EVENT ev)
 {
 }
 

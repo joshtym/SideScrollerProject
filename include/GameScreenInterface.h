@@ -11,7 +11,7 @@ class GameScreenInterface
 		
 		virtual void loadContent();
 		virtual void unloadContent();
-		virtual void updateContent();
+		virtual void updateContent(ALLEGRO_EVENT ev);
 		virtual void draw(ALLEGRO_DISPLAY*);
 };
 #endif

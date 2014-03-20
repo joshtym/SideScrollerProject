@@ -24,7 +24,7 @@ void SplashScreen::unloadContent()
 	al_destroy_bitmap(bitmap);
 }
 
-void SplashScreen::update(ALLEGRO_EVENT ev)
+void SplashScreen::updateContent(ALLEGRO_EVENT ev)
 {
 	if (splashInput.isKeyPressed(ev, ALLEGRO_KEY_ENTER))
 		ScreenManager::GetInstance().addScreen(new TitleScreen());

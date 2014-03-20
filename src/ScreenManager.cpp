@@ -46,7 +46,7 @@ void ScreenManager::loadContent()
 
 void ScreenManager::update(ALLEGRO_EVENT ev)
 {
-	currentScreen->updateContent();
+	currentScreen->updateContent(ev);
 }
 
 void ScreenManager::draw(ALLEGRO_DISPLAY *display)

@@ -16,7 +16,7 @@ class SplashScreen : public GameScreenInterface
 		
 		void loadContent();
 		void unloadContent();
-		void update(ALLEGRO_EVENT ev);
+		void updateContent(ALLEGRO_EVENT ev);
 		void draw(ALLEGRO_DISPLAY *display);
 };
 #endif

@@ -10,7 +10,7 @@ GameScreen::~GameScreen()
 
 void GameScreen::loadContent()
 {
-	bitmap = al_load_bitmap("backdrop.bmp");
+	bitmap = al_load_bitmap("./imgFiles/backdrop.bmp");
 	userPlayer.loadPlayer();
 }
 

@@ -11,6 +11,7 @@ class Player
 		int x;
 		int y;
 		int moveSpeed = 5;
+		bool flip = false;
 		
 	public:
 		Player();

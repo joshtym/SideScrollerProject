@@ -13,7 +13,7 @@ SplashScreen::~SplashScreen()
 
 void SplashScreen::loadContent()
 {
-	bitmap = al_load_bitmap("splash.bmp");
+	bitmap = al_load_bitmap("./imgFiles/splash.bmp");
 }
 
 void SplashScreen::unloadContent()

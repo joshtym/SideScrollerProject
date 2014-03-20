@@ -15,7 +15,7 @@ TitleScreen::~TitleScreen()
 void TitleScreen::loadContent()
 {
 	font = al_load_font("w.ttf", 30, 0);
-	bitmap = al_load_bitmap("title.bmp");
+	bitmap = al_load_bitmap("./imgFiles/title.bmp");
 }
 
 void TitleScreen::unloadContent()

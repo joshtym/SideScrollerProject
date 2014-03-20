@@ -51,6 +51,9 @@ int main()
 		if (input.isKeyReleased(ev, keys))
 			completed = true;
 		
+		if (ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
+			completed = true;
+			
 		if (input.isKeyPressed(ev, ALLEGRO_KEY_E))
 			ScreenManager::GetInstance().addScreen(new TitleScreen());
 		

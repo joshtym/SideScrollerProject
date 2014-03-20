@@ -2,9 +2,14 @@
 #define GAMESCREE_H
 
 #include "GameScreenInterface.h"
+#include "Player.h"
 
 class GameScreen : public GameScreenInterface
 {
+	private:
+		Player userPlayer;
+		ALLEGRO_BITMAP *bitmap;
+		
 	public:
 		GameScreen();
 		~GameScreen();

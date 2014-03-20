@@ -4,28 +4,20 @@
 #include <allegro5/allegro.h>
 #include <allegro5/keyboard.h>
 
-class Player {
-
+class Player 
+{
+	private:
+		ALLEGRO_BITMAP *playerBitmap;
+		int x;
+		int y;
+		int moveSpeed = 5;
+		
 	public:
 		Player();
 		~Player();
 		void loadPlayer();
 		void unloadPlayer();
-		
-	private:
-		ALLEGRO_BITMAP *playerBitmap;
-		int x;
-		int y;
-		int speed = 5;
-		
-	public:
 		void move(ALLEGRO_EVENT);
 		void draw();
 };
-
-
-
-
-
-
 #endif

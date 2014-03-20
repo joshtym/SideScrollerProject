@@ -1,19 +1,16 @@
 #include "GameScreen.h"
-#include "Player.h"
-
 
 GameScreen::GameScreen()
-{
-	
+{	
 }
 
 GameScreen::~GameScreen()
 {
-	
 }
 
 void GameScreen::loadContent()
 {
+	bitmap = al_load_bitmap("backdrop.bmp");
 	userPlayer.loadPlayer();
 }
 
@@ -29,5 +26,6 @@ void GameScreen::updateContent(ALLEGRO_EVENT ev)
 
 void GameScreen::draw(ALLEGRO_DISPLAY *display)
 {
+	al_draw_bitmap(bitmap, 0, 0, 0);
 	userPlayer.draw();
 }

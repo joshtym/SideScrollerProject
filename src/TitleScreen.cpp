@@ -1,8 +1,8 @@
 #include "TitleScreen.h"
 #include "SplashScreen.h"
-#include <iostream>
+#include "SplashScreen.h"
 
-InputManager titleInput;
+InputManagement titleInput;
 
 TitleScreen::TitleScreen()
 {
@@ -14,7 +14,8 @@ TitleScreen::~TitleScreen()
 
 void TitleScreen::loadContent()
 {
-	font = al_load_font("COMICATE.ttf", 30, 0);
+	font = al_load_font("arial.ttf", 30, 0);
+	bitmap = al_load_bitmap("splash.bmp");
 }
 
 void TitleScreen::unloadContent()
@@ -30,5 +31,6 @@ void TitleScreen::update(ALLEGRO_EVENT ev)
 
 void TitleScreen::draw(ALLEGRO_DISPLAY *display)
 {
+	al_draw_bitmap(bitmap, 0, 0, 0);
 	al_draw_text(font, al_map_rgb(255, 0, 0), 100, 100, 0, "TitleScreen");
 }

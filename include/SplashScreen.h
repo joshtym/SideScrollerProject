@@ -2,11 +2,14 @@
 #define SPLASHSCREEN_H
 
 #include "ScreenManager.h"
+#include "InputManagement.h"
 
 class SplashScreen : public GameScreenInterface
 {
 	private:
 		ALLEGRO_FONT *font;
+		ALLEGRO_BITMAP *bitmap;
+		
 	public:
 		SplashScreen();
 		~SplashScreen();

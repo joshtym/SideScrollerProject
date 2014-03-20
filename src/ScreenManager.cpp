@@ -28,7 +28,7 @@ ScreenManager &ScreenManager::GetInstance()
 
 void ScreenManager::Initialize()
 {
-	currentScreen = new TitleScreen();
+	currentScreen = new SplashScreen();
 }
 
 void ScreenManager::addScreen(GameScreenInterface *screen)

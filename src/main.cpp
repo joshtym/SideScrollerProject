@@ -37,7 +37,6 @@ int main()
 	
 	std::vector<int> keys;
 	
-	keys.push_back(ALLEGRO_KEY_DOWN);
 	keys.push_back(ALLEGRO_KEY_ESCAPE);
 	
 	al_start_timer(timer);

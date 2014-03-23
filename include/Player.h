@@ -10,8 +10,11 @@ class Player
 		ALLEGRO_BITMAP *playerBitmap;
 		int x;
 		int y;
+		int tick = 0;
 		int moveSpeed = 5;
 		bool flip = false;
+		void setX(int);
+		void setY(int);
 		
 	public:
 		Player();
@@ -20,5 +23,7 @@ class Player
 		void unloadPlayer();
 		void move(ALLEGRO_EVENT);
 		void draw();
+		void gravityTick();
+		
 };
 #endif

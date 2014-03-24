@@ -4,8 +4,9 @@
  
 Player::Player()
 {
-	x = 5;
+	x = 10;
 	y = 300;
+
 }
  
 Player::~Player()
@@ -22,14 +23,15 @@ void Player::move(ALLEGRO_EVENT e)
 			break;
 		case ALLEGRO_KEY_D:
 			setX(moveSpeed);
-			flip = false;
+			setFlip(false);
 			break;
 		case ALLEGRO_KEY_W:
+			jump = true;
 			setY(0-moveSpeed);
 			break;
 		case ALLEGRO_KEY_A:
 			setX(0-moveSpeed);
-			flip = true;
+			setFlip(true);
 			break;
 		default:
 			break;
@@ -38,6 +40,7 @@ void Player::move(ALLEGRO_EVENT e)
 
 void Player::gravityTick()
 {
+	
 	if(tick++ > 3)
 	{
 		setY(5);
@@ -46,9 +49,29 @@ void Player::gravityTick()
 
 }
 
+void Player::setFlip(bool f)
+{
+	flip = f;
+}
+
+void Player::jumpTick()
+{
+	if(jump)
+	{
+		jCount++;
+		setY(-5);
+		if(jCount > 5)
+		{
+			jump = false;
+			jCount = 0;
+		}
+		
+	}
+}
+
 void Player::setY(int speed)
 {
-	std::cout << y << std::endl;
+//	std::cout << y << std::endl;
 
 	if(y <= 300 && speed < 0)
 		y += speed;

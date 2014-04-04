@@ -5,4 +5,4 @@
 # OBS: any previous definitions are cleared; change the command if
 # this is not desired
 
-export LD_LIBRARY_PATH=/home/lib2720/allegro5/lib/
+export LD_LIBRARY_PATH=./libs/allegro5/lib/

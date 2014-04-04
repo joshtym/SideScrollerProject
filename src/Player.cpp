@@ -48,8 +48,6 @@ void Player::gravityTick()
 
 void Player::setY(int speed)
 {
-	std::cout << y << std::endl;
-
 	if(y <= 300 && speed < 0)
 		y += speed;
 	else if(speed > 0 && y < 300)

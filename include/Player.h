@@ -15,15 +15,19 @@ class Player
 		bool flip = false;
 		void setX(int);
 		void setY(int);
+		bool jump = false;
+		int jumpCounter = 0;
 		
 	public:
 		Player();
 		~Player();
 		void loadPlayer();
 		void unloadPlayer();
+		void jumpTick();
 		void move(ALLEGRO_EVENT);
 		void draw();
 		void gravityTick();
 		
 };
 #endif
+ 

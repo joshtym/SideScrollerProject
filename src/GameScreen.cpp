@@ -7,7 +7,7 @@ GameScreen::GameScreen()
 GameScreen::~GameScreen()
 {
 }
-
+ 
 void GameScreen::loadContent()
 {
 	bitmap = al_load_bitmap("./imgFiles/backdrop.bmp");
@@ -21,6 +21,8 @@ void GameScreen::unloadContent()
 
 void GameScreen::updateContent(ALLEGRO_EVENT ev)
 {
+	userPlayer.jumpTick();
+	userPlayer.gravityTick();
 	userPlayer.move(ev);
 }
 

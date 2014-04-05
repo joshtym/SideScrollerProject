@@ -24,23 +24,42 @@ void Player::move(ALLEGRO_EVENT e)
 			setX(moveSpeed);
 			flip = false;
 			break;
-		case ALLEGRO_KEY_W:
+		case ALLEGRO_KEY_SPACE:
 			setY(0-moveSpeed);
+			jumpCounter = 5;
+			jump = true;
 			break;
 		case ALLEGRO_KEY_A:
 			setX(0-moveSpeed);
 			flip = true;
+			jumpCounter = 5;
 			break;
 		default:
 			break;
 	}
 }
 
+void Player::jumpTick()
+{
+	if(jump)
+	{
+		if(jumpCounter > 0)
+		{
+			setY(-5);
+			jumpCounter--;
+		}
+		else
+		{
+			jump = false;
+		}
+	}
+}
+
 void Player::gravityTick()
 {
 	if(tick++ > 3)
-	{
-		setY(5);
+	{ 
+		setY(3);
 		tick = 0;
 	}
 

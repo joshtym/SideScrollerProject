@@ -18,6 +18,7 @@ class Player
 		void setFlip(bool);
 		int jCount = 0;
 		bool jump = false;
+		int floor = 300;
 		
 		
 	public:
@@ -29,6 +30,9 @@ class Player
 		void draw();
 		void gravityTick();
 		void jumpTick();
+		int getX();
+		int getY();
+		void setFloor();
 		
 };
 #endif

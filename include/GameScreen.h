@@ -3,12 +3,14 @@
 
 #include "GameScreenInterface.h"
 #include "Player.h"
+#include "CollisionDetection.h"
 
 class GameScreen : public GameScreenInterface
 {
 	private:
-		Player userPlayer;
+		Player *userPlayer;
 		ALLEGRO_BITMAP *bitmap;
+		CollisionDetection cd;
 		
 	public:
 		GameScreen();
@@ -18,5 +20,6 @@ class GameScreen : public GameScreenInterface
 		void unloadContent();
 		void updateContent(ALLEGRO_EVENT ev);
 		void draw(ALLEGRO_DISPLAY*);
+		
 };
 #endif

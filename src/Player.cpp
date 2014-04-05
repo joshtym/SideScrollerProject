@@ -25,7 +25,7 @@ void Player::move(ALLEGRO_EVENT e)
 			setX(moveSpeed);
 			setFlip(false);
 			break;
-		case ALLEGRO_KEY_W:
+		case ALLEGRO_KEY_SPACE:
 			jump = true;
 			setY(0-moveSpeed);
 			break;
@@ -36,6 +36,11 @@ void Player::move(ALLEGRO_EVENT e)
 		default:
 			break;
 	}
+}
+
+void Player::setFloor()
+{
+	
 }
 
 void Player::gravityTick()
@@ -73,12 +78,14 @@ void Player::setY(int speed)
 {
 //	std::cout << y << std::endl;
 
-	if(y <= 300 && speed < 0)
+	if(y <= floor && speed < 0)
 		y += speed;
-	else if(speed > 0 && y < 300)
+	else if(speed > 0 && y < floor)
 	{
 		y += speed;
 	}
+	else if (y > floor)
+		y = 300;
 		
 	
 }
@@ -86,6 +93,16 @@ void Player::setY(int speed)
 void Player::setX(int speed)
 {
 	x += speed;
+}
+
+int Player::getX()
+{
+	return x;
+}
+
+int Player::getY()
+{
+	return y;
 }
  
 void Player::loadPlayer()

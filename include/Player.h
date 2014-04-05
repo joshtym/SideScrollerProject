@@ -8,8 +8,7 @@ class Player
 {
 	private:
 		ALLEGRO_BITMAP *playerBitmap;
-		int x;
-		int y;
+		
 		int tick = 0;
 		int moveSpeed = 5;
 		bool flip = false;
@@ -20,7 +19,14 @@ class Player
 		bool jump = false;
 		int floor = 300;
 		int jumpCounter = 0;
-
+		
+		//x and y are image
+		int imgWidth;
+		int imgHeight;
+		int x;
+		int y;
+		int xWidth;
+		int yHeight;
 		
 	public:
 		Player();
@@ -33,7 +39,7 @@ class Player
 		void jumpTick();
 		int getX();
 		int getY();
-		void setFloor();
+		void setFloor(int);
 		
 };
 #endif

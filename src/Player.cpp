@@ -1,12 +1,13 @@
 #include "Player.h"
- #include <iostream>
- 
+#include <iostream>
+#include <stdio.h>
  
 Player::Player()
 {
 	x = 10;
 	y = 300;
-
+	
+	
 }
  
 Player::~Player()
@@ -26,9 +27,12 @@ void Player::move(ALLEGRO_EVENT e)
 			setFlip(false);
 			break;
 		case ALLEGRO_KEY_SPACE:
-			setY(0-moveSpeed);
-			jumpCounter = 5;
-			jump = true;
+			if(y == floor)
+			{
+				setY(0-moveSpeed);
+				jumpCounter = 5;
+				jump = true;
+			}
 			break;
 		case ALLEGRO_KEY_A:
 			setX(0-moveSpeed);
@@ -40,10 +44,9 @@ void Player::move(ALLEGRO_EVENT e)
 }
 
 
-void Player::setFloor()
-{
-	
-	
+void Player::setFloor(int fl)
+{	
+	floor = fl;
 }
 
 void Player::gravityTick()
@@ -67,7 +70,7 @@ void Player::jumpTick()
 	if(jump)
 	{
 		jCount++;
-		setY(-5);
+		setY(-10);
 		if(jCount > 5)
 		{
 			jump = false;
@@ -87,7 +90,7 @@ void Player::setY(int speed)
 		y += speed;
 	}
 	else if (y > floor)
-		y = 300;
+		y = floor;
 		
 	
 }
@@ -110,6 +113,10 @@ int Player::getY()
 void Player::loadPlayer()
 {
 	playerBitmap = al_load_bitmap("./imgFiles/player.png");
+	imgWidth =  al_get_bitmap_width(playerBitmap);
+	imgHeight = al_get_bitmap_height(playerBitmap);
+
+	
 }
 
 void Player::unloadPlayer()

@@ -22,7 +22,7 @@ class CollisionDetection
 		CollisionDetection();
 		CollisionDetection(Player*);
 		~CollisionDetection();
-		void calculateFloor(int);
+		void calculateFloor();
 		void setPlayer(Player*);
 		
 

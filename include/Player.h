@@ -19,7 +19,8 @@ class Player
 		int jCount = 0;
 		bool jump = false;
 		int floor = 300;
-		
+		int jumpCounter = 0;
+
 		
 	public:
 		Player();
@@ -36,3 +37,4 @@ class Player
 		
 };
 #endif
+ 

@@ -33,7 +33,7 @@ void ScreenManager::Initialize()
 
 void ScreenManager::addScreen(GameScreenInterface *screen)
 {
-	newScreen = screen;
+	newScreen = screen; 
 	currentScreen->unloadContent();
 	currentScreen = newScreen;
 	currentScreen->loadContent();

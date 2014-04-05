@@ -10,7 +10,7 @@ GameScreen::~GameScreen()
 {
 	delete userPlayer;
 }
-
+ 
 void GameScreen::loadContent()
 {
 	bitmap = al_load_bitmap("./imgFiles/backdrop.bmp");
@@ -29,7 +29,7 @@ void GameScreen::updateContent(ALLEGRO_EVENT ev)
 	userPlayer->gravityTick();
 	userPlayer->move(ev);
 	
-	
+
 }
 
 void GameScreen::draw(ALLEGRO_DISPLAY *display)

@@ -2,6 +2,7 @@
 #define SCREENMANAGER_H
 
 #include "GameScreenInterface.h"
+#include "ScreenTransition.h"
 #include <iostream>
 
 // Allegro Inits
@@ -19,7 +20,7 @@ class ScreenManager
 		ScreenManager();
 		ScreenManager(const ScreenManager&);
 		ScreenManager& operator=(const ScreenManager&);
-		
+		ScreenTransition transition;
 		//GameScreen *currentScreen, *newScreen;
 	
 	public:

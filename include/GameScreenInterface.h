@@ -1,6 +1,7 @@
 #ifndef GAMESCREENINTERFACE_H
 #define GAMESCREENINTERFACE_H
 
+#include "InputManagement.h"
 #include <allegro5/allegro.h>
 
 /// Class that defines an Interface for all Game Screens
@@ -10,6 +11,9 @@
 **/
 class GameScreenInterface
 {
+	protected:
+		InputManagement input;
+		
 	public:
 		GameScreenInterface();
 		~GameScreenInterface();

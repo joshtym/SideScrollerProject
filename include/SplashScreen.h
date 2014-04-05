@@ -2,7 +2,6 @@
 #define SPLASHSCREEN_H
 
 #include "ScreenManager.h"
-#include "InputManagement.h"
 
 class SplashScreen : public GameScreenInterface
 {

@@ -1,6 +1,8 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+
+#include "SpriteSheet.h"
 #include <allegro5/allegro.h>
 #include <allegro5/keyboard.h>
 
@@ -28,11 +30,15 @@ class Player
 		int xWidth;
 		int yHeight;
 		
+		Animation playerAnimation;
+		SpriteSheet ssAnimation;
+		
 	public:
 		Player();
 		~Player();
 		void loadPlayer();
 		void unloadPlayer();
+		void update(ALLEGRO_EVENT);
 		void move(ALLEGRO_EVENT);
 		void draw();
 		void gravityTick();

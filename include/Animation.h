@@ -20,13 +20,20 @@ class Animation
 		double getAlpha();
 		void setIsActive(bool);
 		bool getIsActive();
+		std::pair<int, int> &modifiableFrameCount();
+		std::pair<int, int> &modifiableCurrentFrame();
+		std::pair<int, int> &getFrameDimensions();
+		
+		ALLEGRO_BITMAP* Image();
+		ALLEGRO_BITMAP*& returnSourceRectangle();
 	
 	protected:
 		ALLEGRO_BITMAP *image, *sourceRectangle;
-		ALLEGRO_FONT *font;
 		std::string text;
 		double position[2];
 		double alpha;
 		bool isActive;
+		std::pair<int, int> frameCount;
+		std::pair<int, int> currentFrame;
 };
 #endif

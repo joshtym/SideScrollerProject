@@ -11,7 +11,7 @@ ScreenTransition::~ScreenTransition()
 void ScreenTransition::loadContent(ALLEGRO_BITMAP* givenImage, std::string givenText, double givenPosition[2])
 {
 	Animation::loadContent(givenImage, givenText, givenPosition);
-	transitionSpeed = 1;
+	transitionSpeed = 5;
 	increase = false;
 }
 

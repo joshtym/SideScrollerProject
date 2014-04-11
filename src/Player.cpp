@@ -112,9 +112,12 @@ int Player::getY()
  
 void Player::loadPlayer()
 {
-	playerBitmap = al_load_bitmap("./imgFiles/player.png");
+	playerBitmap = al_load_bitmap("./imgFiles/image.png");
 	imgWidth =  al_get_bitmap_width(playerBitmap);
 	imgHeight = al_get_bitmap_height(playerBitmap);
+	
+	double position[] = {x, y};
+	playerAnimation.loadContent(playerBitmap, "", position);
 
 	
 }
@@ -122,6 +125,15 @@ void Player::loadPlayer()
 void Player::unloadPlayer()
 {
 	al_destroy_bitmap(playerBitmap);
+	playerAnimation.unloadContent();
+}
+
+void Player::update(ALLEGRO_EVENT ev)
+{
+	move(ev);
+	jumpTick();
+	gravityTick();
+	move(ev);
 }
 
 void Player::draw()

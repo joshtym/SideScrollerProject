@@ -81,7 +81,7 @@ void ScreenManager::transitionHandler()
 		delete currentScreen;
 		currentScreen = newScreen;
 		currentScreen->loadContent();
-		al_rest(1.0);
+		//al_rest(1.0);
 	}
 	else if (transition.getAlpha() <= 0)
 	{

@@ -119,6 +119,7 @@ void Player::loadPlayer()
 	
 }
 
+
 void Player::unloadPlayer()
 {
 	al_destroy_bitmap(playerBitmap);

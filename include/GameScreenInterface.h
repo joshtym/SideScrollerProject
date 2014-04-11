@@ -39,5 +39,7 @@ class GameScreenInterface
 		 * Draw the updated content
 		**/
 		virtual void draw(ALLEGRO_DISPLAY*);
+		
+		Inputmanagement getInput();
 };
 #endif

@@ -20,8 +20,11 @@ class ScreenManager
 		ScreenManager();
 		ScreenManager(const ScreenManager&);
 		ScreenManager& operator=(const ScreenManager&);
+		ALLEGRO_BITMAP* transitionImage;
 		ScreenTransition transition;
 		//GameScreen *currentScreen, *newScreen;
+		void transitionHandler();
+		bool startOfTransition;
 	
 	public:
 		~ScreenManager();
@@ -29,6 +32,7 @@ class ScreenManager
 		void Initialize();
 		void addScreen(GameScreenInterface *screen);
 		void loadContent();
+		void unloadContent();
 		void update(ALLEGRO_EVENT ev);
 		void draw(ALLEGRO_DISPLAY *display);
 };

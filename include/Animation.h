@@ -16,6 +16,10 @@ class Animation
 		virtual void unloadContent();
 		virtual void update(InputManagement);
 		void draw(ALLEGRO_DISPLAY *display);
+		virtual void setAlpha(double);
+		double getAlpha();
+		void setIsActive(bool);
+		bool getIsActive();
 	
 	protected:
 		ALLEGRO_BITMAP *image, *sourceRectangle;

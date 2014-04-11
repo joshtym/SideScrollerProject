@@ -23,3 +23,8 @@ void GameScreenInterface::updateContent(ALLEGRO_EVENT ev)
 void GameScreenInterface::draw(ALLEGRO_DISPLAY *disp)
 {
 }
+
+InputManagement GameScreenInterface::getInput()
+{
+	return input;
+}

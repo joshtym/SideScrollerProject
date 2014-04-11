@@ -44,3 +44,13 @@ void ScreenTransition::update(InputManagement input)
 	else
 		alpha = 255;
 }
+
+void ScreenTransition::setAlpha(double givenInput)
+{
+	alpha = givenInput;
+	
+	if (alpha == 0)
+		increase = true;
+	else if (alpha == 255)
+		increase = false;
+}

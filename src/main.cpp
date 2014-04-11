@@ -60,6 +60,7 @@ int main()
 		al_clear_to_color(al_map_rgb(0, 0, 0));
 	}
 	
+	ScreenManager::GetInstance().unloadContent();
 	al_destroy_timer(timer);
 	al_destroy_event_queue(event_queue);
 	

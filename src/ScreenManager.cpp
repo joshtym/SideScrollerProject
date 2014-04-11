@@ -33,8 +33,8 @@ void ScreenManager::Initialize()
 
 void ScreenManager::addScreen(GameScreenInterface *screen)
 {
-	transition.SetAlpha(0);
-	startTransition = true;
+	transition.setAlpha(0);
+	startOfTransition = true;
 	newScreen = screen;
 	transition.setIsActive(true);
 }
@@ -44,13 +44,13 @@ void ScreenManager::loadContent()
 	startOfTransition = false;
 	currentScreen->loadContent();
 	transitionImage = al_load_bitmap("./imgFiles/black-wallpapers.jpg");
-	double position = {0,0};
-	transition.load(transitionImage, "", position);
+	double position[] = {0,0};
+	transition.loadContent(transitionImage, "", position);
 }
 
 void ScreenManager::unloadContent()
 {
-	al_destroy_bitmap("./imgFiles/black-wallpapers.jpg");
+	al_destroy_bitmap(transitionImage);
 	transition.unloadContent();
 }
 
@@ -85,8 +85,7 @@ void ScreenManager::transitionHandler()
 	}
 	else if (transition.getAlpha() <= 0)
 	{
-		startTransition = false;
+		startOfTransition = false;
 		transition.setIsActive(false);
-	
-	
+	}
 }

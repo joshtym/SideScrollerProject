@@ -8,7 +8,7 @@ class ScreenTransition : public Animation
 	public:
 		ScreenTransition();
 		~ScreenTransition();
-		void loadContent(ALLEGRO_BITMAP*, std::string, double);
+		void loadContent(ALLEGRO_BITMAP*, std::string, double[]);
 		void unloadContent();
 		void update(InputManagement);
 		void setAlpha(double);

@@ -40,6 +40,6 @@ class GameScreenInterface
 		**/
 		virtual void draw(ALLEGRO_DISPLAY*);
 		
-		Inputmanagement getInput();
+		InputManagement getInput();
 };
 #endif

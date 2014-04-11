@@ -17,7 +17,7 @@ int TdObject::getY()
 }
 int TdObject::getYHeight()
 {
-	return getYHeight;
+	return yHeight;
 }
 int TdObject::getXWidth()
 {

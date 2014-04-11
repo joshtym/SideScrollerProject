@@ -8,9 +8,9 @@ ScreenTransition::~ScreenTransition()
 {
 }
 
-void ScreenTransition::loadContent(ALLEGRO_BITMAP* image, std::string text, double position[2])
+void ScreenTransition::loadContent(ALLEGRO_BITMAP* givenImage, std::string givenText, double givenPosition[2])
 {
-	Animation::loadContent(image, text, position);
+	Animation::loadContent(givenImage, givenText, givenPosition);
 	transitionSpeed = 1;
 	increase = false;
 }

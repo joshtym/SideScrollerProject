@@ -68,7 +68,6 @@ void Platform::unloadPlatform()
 
 void Platform::draw()
 {
-	std::cout << tdo->getXWidth() << " " << tdo->getYHeight() << "\n";
 	al_draw_bitmap(platformBitmap, x, y, 0);
 
 }

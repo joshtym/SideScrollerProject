@@ -13,6 +13,7 @@ class GameScreen : public GameScreenInterface
 		Platform *userPlatform;
 		ALLEGRO_BITMAP *bitmap;
 		CollisionDetection cd;
+		int x;
 		
 	public:
 		GameScreen();

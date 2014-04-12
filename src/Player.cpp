@@ -7,6 +7,7 @@ Player::Player()
 	x = 10;
 	y = 388;
 	tdo = new TdObject();
+	playerAnimation.getIsActive() = true;
 	
 }
  
@@ -27,11 +28,17 @@ void Player::move(ALLEGRO_EVENT e)
 	switch(e.keyboard.keycode)
 	{
 		case ALLEGRO_KEY_S:
+			playerAnimation.getIsActive() = true;
+			direction = Direction::DOWN;
 			break;
 		case ALLEGRO_KEY_D:
+			playerAnimation.getIsActive() = true;
+			direction = Direction::RIGHT;
 			setX(moveSpeed);;
 			break;
 		case ALLEGRO_KEY_SPACE:
+			playerAnimation.getIsActive() = true;
+			direction = Direction::LEFT;
 			if(floor > 0 && y == floor)
 			{
 				setY(0-moveSpeed);
@@ -46,6 +53,8 @@ void Player::move(ALLEGRO_EVENT e)
 			}
 			break;
 		case ALLEGRO_KEY_A:
+			playerAnimation.getIsActive() = true;
+			direction = Direction::UP;
 			setX(0-moveSpeed);
 			break;
 		default:
@@ -141,6 +150,7 @@ void Player::loadPlayer()
 	double position[] = {x, y};
 	playerAnimation.loadContent(playerBitmap, "", position);
 	playerAnimation.getIsActive() = true;
+	direction = Direction::DOWN;
 	
 	
 	tdo->setX(x);
@@ -163,6 +173,7 @@ void Player::update(ALLEGRO_EVENT ev)
 	gravityTick();
 	tdo->setX(x);
 	tdo->setY(y);
+	playerAnimation.modifiableCurrentFrame().second = direction;
 	ssAnimation.update(playerAnimation);
 }
 

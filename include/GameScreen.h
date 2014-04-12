@@ -7,6 +7,10 @@
 #include "CollisionDetection.h"
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_ttf.h>
+#include <iostream>
+#include <sstream>
+
+using namespace std;
 
 class GameScreen : public GameScreenInterface
 {
@@ -32,5 +36,7 @@ class GameScreen : public GameScreenInterface
 		bool isCollidingWithEdge;
 		bool isCollidingOnPlatformTop;
 		ALLEGRO_FONT *font;
+		ostringstream oss;
+		int score = 0;
 };
 #endif

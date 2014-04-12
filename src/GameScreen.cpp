@@ -2,7 +2,7 @@
 #include "BlockPlatform.h"
 #include "BusObject.h"
 #include "TitleScreen.h"
-#include <iostream>
+
 
 GameScreen::GameScreen()
 {
@@ -14,7 +14,7 @@ GameScreen::GameScreen()
 	playerIsDead = false;
 	al_init_font_addon(); // initialize the font addon
 	al_init_ttf_addon();// initialize the ttf (True Type Font) addon
-	font = al_load_ttf_font("./src/font.ttf",72,0 );
+	font = al_load_ttf_font("./src/font.ttf",62,0 );
 }
 
 GameScreen::~GameScreen()
@@ -42,7 +42,8 @@ void GameScreen::unloadContent()
 void GameScreen::updateContent(ALLEGRO_EVENT ev)
 {
 	time++;
-	
+	if(time % 5 == 0)
+		score++;
 	
 	imageXValue = time*-2;
 	platformXValue = (800 - time*2);
@@ -76,8 +77,14 @@ void GameScreen::draw(ALLEGRO_DISPLAY *display)
 {
 	al_draw_bitmap(bitmap, imageXValue, 0, 0);
 	userPlatform ->draw();
-	al_draw_text(font, al_map_rgb(0,0,0), 750, (20),ALLEGRO_ALIGN_CENTRE, "This");
+	oss << "Score: ";
+	oss << score;
+	al_draw_text(font, al_map_rgb(0,0,0), 550, (20),ALLEGRO_ALIGN_LEFT, oss.str().c_str());
 	userPlayer->draw(display);
+	oss.str("");
+	oss.clear();
 	
 	
 }
+
+

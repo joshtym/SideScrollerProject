@@ -25,11 +25,7 @@ void GameScreen::unloadContent()
 void GameScreen::updateContent(ALLEGRO_EVENT ev)
 {
 	cd.calculateFloor();
-	userPlayer->jumpTick();
-	userPlayer->gravityTick();
-	userPlayer->move(ev);
-	
-
+	userPlayer->update(ev);
 }
 
 void GameScreen::draw(ALLEGRO_DISPLAY *display)

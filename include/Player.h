@@ -23,6 +23,7 @@ class Player
 		void setXStatic();
 		int getLastXPosition();
 		ObjectDimensions& getCurrentDimensions();
+		void setIsOnPlatform(bool);
 		
 	private:
 		ALLEGRO_BITMAP *playerBitmap;
@@ -38,6 +39,7 @@ class Player
 		double stageFloor;
 		int jumpCounter;
 		int lastXPosition;
+		bool onPlatform;
 };
 #endif
  

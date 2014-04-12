@@ -46,13 +46,14 @@ void Player::movePlayer(ALLEGRO_EVENT e)
 		case ALLEGRO_KEY_SPACE:
 			playerAnimation.getIsActive() = true;
 			playerDimensions.setDirection(Direction::DOWN);
-			if(floor > 0 && playerDimensions.getMinY() == floor)
+			if(onPlatform)
 			{
 				setY(0-moveSpeed);
 				jumpCounter = 5;
 				jump = true;
+				onPlatform = false;
 			}
-			if(playerDimensions.getMinY() == stageFloor)
+			else if(playerDimensions.getMinY() == stageFloor)
 			{
 				setY(0-moveSpeed);
 				jumpCounter = 5;
@@ -74,6 +75,11 @@ void Player::movePlayer(ALLEGRO_EVENT e)
 void Player::setFloor(double fl)
 {	
 	floor = fl;
+}
+
+void Player::setIsOnPlatform(bool b)
+{
+	onPlatform = b;
 }
 
 int Player::getLastXPosition()
@@ -103,7 +109,7 @@ void Player::jumpTick()
 void Player::setY(double speed)
 {
 
-	if(floor > 0)
+	if(floor > 0 && onPlatform)
 	{
 		if(playerDimensions.getMinY() <= floor && speed < 0)
 			playerDimensions.setMinY(playerDimensions.getMinY() + speed);

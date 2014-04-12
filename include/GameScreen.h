@@ -5,6 +5,8 @@
 #include "Player.h"
 #include "Platform.h"
 #include "CollisionDetection.h"
+#include <allegro5/allegro_font.h>
+#include <allegro5/allegro_ttf.h>
 
 class GameScreen : public GameScreenInterface
 {
@@ -28,5 +30,7 @@ class GameScreen : public GameScreenInterface
 		bool playerIsDead;
 		bool isCollidingWithObject;
 		bool isCollidingWithEdge;
+		bool isCollidingOnPlatformTop;
+		ALLEGRO_FONT *font;
 };
 #endif

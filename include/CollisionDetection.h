@@ -13,6 +13,7 @@ class CollisionDetection
 		bool checkForPlayerAtEdgeOfScreen(ObjectDimensions);
 		void fixCollision(ObjectDimensions&, ObjectDimensions&);
 		void fixCollisionAtEdgeOfScreen(ObjectDimensions&);
+		bool isOnTopPlatform(ObjectDimensions&, ObjectDimensions&);
 		
 	private:
 		void fixCollisionLeftSide(ObjectDimensions&, ObjectDimensions&);

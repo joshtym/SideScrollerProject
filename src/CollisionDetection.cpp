@@ -9,6 +9,13 @@ CollisionDetection::~CollisionDetection()
 {
 }
 
+bool CollisionDetection::isOnTopPlatform(ObjectDimensions& player, ObjectDimensions& obj)
+{
+	if (player.getMaxY() >= obj.getMinY())
+		return true;
+	return false;
+}
+
 bool CollisionDetection::checkForCollision(ObjectDimensions player, ObjectDimensions obj)
 {
 	if(!(player.getMaxX() < obj.getMinX() || player.getMinX() > obj.getMaxX()))

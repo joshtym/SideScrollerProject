@@ -16,6 +16,7 @@ class Platform
 		
 	protected:
 		ALLEGRO_BITMAP *platformBitmap;
+		ALLEGRO_BITMAP *platformBitmap2;
 		ObjectDimensions platformDimension;
 };
 #endif

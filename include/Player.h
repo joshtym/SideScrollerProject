@@ -22,7 +22,7 @@ class Player
 		int jumpCounter = 0;
 		int lastXPosition = 0;
 		TdObject *tdo;
-		enum Direction {UP, LEFT, RIGHT, DOWN};
+		enum Direction {DOWN, LEFT, RIGHT, UP};
 		Direction direction;
 		
 		

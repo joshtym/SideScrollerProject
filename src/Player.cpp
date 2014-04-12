@@ -31,6 +31,10 @@ void Player::move(ALLEGRO_EVENT e)
 			playerAnimation.getIsActive() = true;
 			direction = Direction::DOWN;
 			break;
+		case ALLEGRO_KEY_W:
+			playerAnimation.getIsActive() = true;
+			direction = Direction::UP;
+			break;
 		case ALLEGRO_KEY_D:
 			playerAnimation.getIsActive() = true;
 			direction = Direction::RIGHT;
@@ -38,7 +42,6 @@ void Player::move(ALLEGRO_EVENT e)
 			break;
 		case ALLEGRO_KEY_SPACE:
 			playerAnimation.getIsActive() = true;
-			direction = Direction::LEFT;
 			if(floor > 0 && y == floor)
 			{
 				setY(0-moveSpeed);
@@ -54,7 +57,7 @@ void Player::move(ALLEGRO_EVENT e)
 			break;
 		case ALLEGRO_KEY_A:
 			playerAnimation.getIsActive() = true;
-			direction = Direction::UP;
+			direction = Direction::LEFT;
 			setX(0-moveSpeed);
 			break;
 		default:

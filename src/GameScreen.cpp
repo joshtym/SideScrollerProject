@@ -18,7 +18,7 @@ GameScreen::~GameScreen()
  
 void GameScreen::loadContent()
 {
-	bitmap = al_load_bitmap("./imgFiles/backdropp.bmp");
+	bitmap = al_load_bitmap("./imgFiles/backdropB.bmp");
 	userPlayer->loadPlayer();
 	userPlatform ->loadPlatform();
 }

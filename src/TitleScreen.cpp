@@ -14,13 +14,11 @@ TitleScreen::~TitleScreen()
 
 void TitleScreen::loadContent()
 {
-	font = al_load_font("w.ttf", 30, 0);
 	bitmap = al_load_bitmap("./imgFiles/title.bmp");
 }
 
 void TitleScreen::unloadContent()
 {
-	al_destroy_font(font);
 }
 
 void TitleScreen::updateContent(ALLEGRO_EVENT ev)

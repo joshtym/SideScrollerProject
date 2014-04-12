@@ -6,7 +6,6 @@
 class TitleScreen : public GameScreenInterface
 {
 	private:
-		ALLEGRO_FONT *font;
 		ALLEGRO_BITMAP *bitmap;
 		
 	public:

@@ -5,34 +5,28 @@
 Platform::Platform()
 {
 	x = 100;
-	y = 350;
-		
+	y = 320;
+	tdo = new TdObject();
 }
  
 Platform::~Platform()
 {
+	delete tdo;
 }
 
 
 
-void Platform::setY(int speed)
+void Platform::setY(int yin)
 {
 
-	if(y <= floor && speed < 0)
-		y += speed;
-	else if(speed > 0 && y < floor)
-	{
-		y += speed;
-	}
-	else if (y > floor)
-		y = floor;
+	y = yin;
 		
 	
 }
 
-void Platform::setX(int speed)
+void Platform::setX(int xin)
 {
-	x += speed;
+	x = xin;
 }
 
 int Platform::getX()
@@ -47,11 +41,24 @@ int Platform::getY()
  
 void Platform::loadPlatform()
 {
-	platformBitmap = al_load_bitmap("./imgFiles/basicPlatform.png");
+	platformBitmap = al_load_bitmap("./imgFiles/basicPlatform1.png");
 	imgWidth =  al_get_bitmap_width(platformBitmap);
 	imgHeight = al_get_bitmap_height(platformBitmap);
 
+	xWidth = imgWidth;
+	yHeight = imgHeight;
 	
+	tdo->setX(x);
+	tdo->setY(y);
+	tdo->setYHeight(yHeight);
+	tdo->setXWidth(xWidth);
+	
+	tdo->calcMixMax();
+}
+
+TdObject* Platform::getTdo()
+{
+	return tdo;
 }
 
 void Platform::unloadPlatform()
@@ -61,9 +68,7 @@ void Platform::unloadPlatform()
 
 void Platform::draw()
 {
-	if (true)
-		al_draw_bitmap(platformBitmap, x, y, 0);
-	else
-		al_draw_bitmap(platformBitmap, x, y, ALLEGRO_FLIP_HORIZONTAL);
+	std::cout << tdo->getXWidth() << " " << tdo->getYHeight() << "\n";
+	al_draw_bitmap(platformBitmap, x, y, 0);
 
 }

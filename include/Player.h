@@ -5,6 +5,8 @@
 #include "SpriteSheet.h"
 #include <allegro5/allegro.h>
 #include <allegro5/keyboard.h>
+#include "TdObject.h"
+
 
 class Player 
 {
@@ -13,12 +15,15 @@ class Player
 		
 		int tick = 0;
 		int moveSpeed = 5;
-		void setX(int);
-		void setY(int);
 		int jCount = 0;
 		bool jump = false;
-		double floor = 388;
+		double floor = -10;
+		double stageFloor = 388;
 		int jumpCounter = 0;
+		int lastXPosition = 0;
+		TdObject *tdo;
+		
+		
 		
 		//x and y are image
 		int imgWidth;
@@ -44,6 +49,13 @@ class Player
 		double getX();
 		double getY();
 		void setFloor(double);
+		void setX(int);
+		void setY(int);
+		void setXStatic();
+		bool detectCollision(TdObject*);
+		int getLastXPosition();
+		void detectFloor(TdObject* iTdo);
+
 		
 };
 #endif

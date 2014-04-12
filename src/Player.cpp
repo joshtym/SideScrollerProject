@@ -6,13 +6,20 @@ Player::Player()
 {
 	x = 10;
 	y = 388;
-	
+	tdo = new TdObject();
 	
 }
  
 Player::~Player()
 {
+	delete tdo;
 }
+
+void Player::setXStatic()
+{
+	x = lastXPosition;
+}
+
 
 
 void Player::move(ALLEGRO_EVENT e)
@@ -25,7 +32,13 @@ void Player::move(ALLEGRO_EVENT e)
 			setX(moveSpeed);;
 			break;
 		case ALLEGRO_KEY_SPACE:
-			if(y == floor)
+			if(floor > 0 && y == floor)
+			{
+				setY(0-moveSpeed);
+				jumpCounter = 5;
+				jump = true;
+			}
+			if(y == stageFloor)
 			{
 				setY(0-moveSpeed);
 				jumpCounter = 5;
@@ -44,6 +57,11 @@ void Player::move(ALLEGRO_EVENT e)
 void Player::setFloor(double fl)
 {	
 	floor = fl;
+}
+
+int Player::getLastXPosition()
+{
+	return lastXPosition;
 }
 
 void Player::gravityTick()
@@ -69,20 +87,34 @@ void Player::jumpTick()
 void Player::setY(int speed)
 {
 
-	if(y <= floor && speed < 0)
-		y += speed;
-	else if(speed > 0 && y < floor)
+	if(floor > 0)
 	{
-		y += speed;
+		if(y <= floor && speed < 0)
+			y += speed;
+		else if(speed > 0 && y < floor)
+		{
+			y += speed;
+		}
+		else if (y > floor)
+			y = floor;
 	}
-	else if (y > floor)
-		y = floor;
-		
+	else
+	{
+		if(y <= stageFloor && speed < 0)
+			y += speed;
+		else if(speed > 0 && y < stageFloor)
+		{
+			y += speed;
+		}
+		else if (y > stageFloor)
+			y = stageFloor;
+	}
 	
 }
 
 void Player::setX(int speed)
 {
+	lastXPosition = x;
 	x += speed;
 }
 
@@ -103,9 +135,18 @@ void Player::loadPlayer()
 	imgWidth =  al_get_bitmap_width(playerBitmap);
 	imgHeight = al_get_bitmap_height(playerBitmap);
 	
+	xWidth = imgWidth / 3;
+	yHeight = imgHeight / 4;;
+	
 	double position[] = {x, y};
 	playerAnimation.loadContent(playerBitmap, "", position);
 	playerAnimation.getIsActive() = true;
+	
+	
+	tdo->setX(x);
+	tdo->setY(y);
+	tdo->setYHeight(xWidth);
+	tdo->setXWidth(yHeight);
 }
 
 
@@ -120,8 +161,30 @@ void Player::update(ALLEGRO_EVENT ev)
 	move(ev);
 	jumpTick();
 	gravityTick();
+	tdo->setX(x);
+	tdo->setY(y);
 	ssAnimation.update(playerAnimation);
 }
+
+
+void Player::detectFloor(TdObject* iTdo)
+{
+	if(!(x+xWidth < iTdo->getMinX() || x > iTdo->getMaxX() ))
+	{
+		setFloor(iTdo->getMinY() - yHeight -1);
+	}
+	else
+		floor = -10;
+		
+}
+
+
+bool Player::detectCollision(TdObject* iTdo)
+{
+
+	return tdo->isColliding(iTdo);
+}
+
 
 void Player::draw(ALLEGRO_DISPLAY *display)
 {

@@ -1,5 +1,6 @@
 #include "GameScreen.h"
 #include "Platform.h"
+#include "TdObject.h"
 
 GameScreen::GameScreen()
 {
@@ -30,6 +31,11 @@ void GameScreen::unloadContent()
 void GameScreen::updateContent(ALLEGRO_EVENT ev)
 {
 	cd.calculateFloor();
+	userPlayer->detectFloor(userPlatform->getTdo());
+	if(userPlayer->detectCollision(userPlatform->getTdo()))
+	{
+		userPlayer->setXStatic();
+	}
 	userPlayer->update(ev);
 }
 

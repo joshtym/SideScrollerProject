@@ -37,7 +37,7 @@ void Animation::update(Animation& currentAnimation)
 
 void Animation::draw(ALLEGRO_DISPLAY *display, double x, double y)
 {
-	std::cout << "X: " << x << "Y: " << y << std::endl;
+	//std::cout << "X: " << x << "Y: " << y << std::endl;
 	position[0] = x;
 	position[1] = y;
 	if (sourceRectangle != 0)

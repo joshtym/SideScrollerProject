@@ -71,10 +71,13 @@ void TdObject::calcMixMax()
 
 bool TdObject::isColliding(TdObject *iTdo)
 {
-	if(!(xMin < iTdo->getMinX() && xMax < iTdo->getMaxX() ) || !(xMin > iTdo->getMinX() && xMax > iTdo->getMaxX() )
-	|| !(yMin < iTdo->getMinY() && yMax < iTdo->getMaxY() ) || !(yMin > iTdo->getMinY() && yMax > iTdo->getMaxY() ) )
+	calcMixMax();
+	if(!(xMax < iTdo->getMinX() || xMin > iTdo->getMaxX() ))
 	{
-		return true;
+		if(!(yMax < iTdo->getMinY() || yMin > iTdo->getMaxY()))
+		{
+			return true;
+		}
 	}
 	return false;
 	

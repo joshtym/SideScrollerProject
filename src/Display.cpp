@@ -28,6 +28,8 @@ Display::Display(int userGivenWidth, int userGivenHeight)
 Display::~Display()
 {
 	al_destroy_display(display);
+	al_uninstall_keyboard();
+	al_uninstall_mouse();
 }
 
 void Display::initialize()

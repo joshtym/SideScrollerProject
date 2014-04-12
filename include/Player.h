@@ -13,13 +13,11 @@ class Player
 		
 		int tick = 0;
 		int moveSpeed = 5;
-		bool flip = false;
 		void setX(int);
 		void setY(int);
-		void setFlip(bool);
 		int jCount = 0;
 		bool jump = false;
-		double floor = 300;
+		double floor = 388;
 		int jumpCounter = 0;
 		
 		//x and y are image

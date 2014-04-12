@@ -5,7 +5,7 @@
 Player::Player()
 {
 	x = 10;
-	y = 300;
+	y = 388;
 	
 	
 }
@@ -20,11 +20,9 @@ void Player::move(ALLEGRO_EVENT e)
 	switch(e.keyboard.keycode)
 	{
 		case ALLEGRO_KEY_S:
-			//Duck or something?
 			break;
 		case ALLEGRO_KEY_D:
-			setX(moveSpeed);
-			setFlip(false);
+			setX(moveSpeed);;
 			break;
 		case ALLEGRO_KEY_SPACE:
 			if(y == floor)
@@ -36,7 +34,6 @@ void Player::move(ALLEGRO_EVENT e)
 			break;
 		case ALLEGRO_KEY_A:
 			setX(0-moveSpeed);
-			setFlip(true);
 			break;
 		default:
 			break;
@@ -51,18 +48,7 @@ void Player::setFloor(double fl)
 
 void Player::gravityTick()
 {
-	
-	if(tick++ > 3)
-	{ 
-		setY(3);
-		tick = 0;
-	}
-
-}
-
-void Player::setFlip(bool f)
-{
-	flip = f;
+	setY(10);
 }
 
 void Player::jumpTick()
@@ -70,7 +56,7 @@ void Player::jumpTick()
 	if(jump)
 	{
 		jCount++;
-		setY(-10);
+		setY(-40);
 		if(jCount > 5)
 		{
 			jump = false;
@@ -113,13 +99,13 @@ double Player::getY()
 void Player::loadPlayer()
 {
 	playerBitmap = al_load_bitmap("./imgFiles/image.png");
+	//floor = 388;
 	imgWidth =  al_get_bitmap_width(playerBitmap);
 	imgHeight = al_get_bitmap_height(playerBitmap);
 	
 	double position[] = {x, y};
 	playerAnimation.loadContent(playerBitmap, "", position);
-
-	
+	playerAnimation.getIsActive() = true;
 }
 
 
@@ -134,6 +120,7 @@ void Player::update(ALLEGRO_EVENT ev)
 	move(ev);
 	jumpTick();
 	gravityTick();
+	ssAnimation.update(playerAnimation);
 }
 
 void Player::draw(ALLEGRO_DISPLAY *display)

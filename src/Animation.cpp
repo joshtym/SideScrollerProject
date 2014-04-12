@@ -1,4 +1,5 @@
 #include "Animation.h"
+#include <iostream>
 
 Animation::Animation()
 {
@@ -36,9 +37,12 @@ void Animation::update(Animation& currentAnimation)
 
 void Animation::draw(ALLEGRO_DISPLAY *display, double x, double y)
 {
+	std::cout << "X: " << x << "Y: " << y << std::endl;
+	position[0] = x;
+	position[1] = y;
 	if (sourceRectangle != 0)
 		al_draw_tinted_bitmap(sourceRectangle, al_map_rgba(255, 255, 255, alpha), 
-			x, y, 0);
+			position[0], position[1], 0);
 }
 
 double &Animation::getAlpha()

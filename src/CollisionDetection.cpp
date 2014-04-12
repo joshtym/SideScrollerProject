@@ -18,7 +18,7 @@ void CollisionDetection::calculateFloor()
 	
 	//check yPos against list of platforms yPos get x value
 	
-	p->setFloor(300);
+	//p->setFloor(300);
 }
 
 void CollisionDetection::setPlayer(Player* player)

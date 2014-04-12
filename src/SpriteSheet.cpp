@@ -3,7 +3,7 @@
 SpriteSheet::SpriteSheet()
 {
 	frameCounter = 0;
-	switchFrame = 100;
+	switchFrame = 10;
 }
 
 SpriteSheet::~SpriteSheet()
@@ -22,7 +22,7 @@ void SpriteSheet::update(Animation& currentAnimation)
 			currentAnimation.modifiableCurrentFrame().first++;
 			
 			if (currentAnimation.modifiableCurrentFrame().first * 
-				currentAnimation.modifiableFrameCount().first >= 
+				currentAnimation.getFrameDimensions().first >= 
 				al_get_bitmap_width(currentAnimation.Image()))
 			{
 				currentAnimation.modifiableCurrentFrame().first = 0;

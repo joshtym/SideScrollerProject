@@ -16,7 +16,7 @@ void Animation::loadContent(ALLEGRO_BITMAP* givenImage, std::string givenText, d
 	position[1] = givenPosition[1];
 	
 	alpha = 255;
-	sourceRectangle = image;
+	sourceRectangle = givenImage;
 	isActive = false;
 	
 	frameCount = std::pair<int, int>(3,4);
@@ -25,42 +25,28 @@ void Animation::loadContent(ALLEGRO_BITMAP* givenImage, std::string givenText, d
 
 void Animation::unloadContent()
 {
-	al_destroy_bitmap(image);
 	al_destroy_bitmap(sourceRectangle);
 	alpha = 0;
 	position[0] = position[1] = 0;
 }
 
-void Animation::update(InputManagement input)
+void Animation::update(Animation& currentAnimation)
 {
 }
 
-void Animation::draw(ALLEGRO_DISPLAY *display)
+void Animation::draw(ALLEGRO_DISPLAY *display, double x, double y)
 {
 	if (sourceRectangle != 0)
 		al_draw_tinted_bitmap(sourceRectangle, al_map_rgba(255, 255, 255, alpha), 
-			position[0], position[1], 0);
-	else if (image != 0)
-		al_draw_tinted_bitmap(image, al_map_rgba(0, 0, 0, alpha), 
-			position[0], position[1], 0);
+			x, y, 0);
 }
 
-void Animation::setAlpha(double givenInput)
-{
-	alpha = givenInput;
-}
-
-double Animation::getAlpha()
+double &Animation::getAlpha()
 {
 	return alpha;
 }
 
-void Animation::setIsActive(bool givenInput)
-{
-	isActive = givenInput;
-}
-
-bool Animation::getIsActive()
+bool &Animation::getIsActive()
 {
 	return isActive;
 }

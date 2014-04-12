@@ -2,55 +2,39 @@
 
 ScreenTransition::ScreenTransition()
 {
+	transitionSpeed = 5;
+	increase = false;
 }
 
 ScreenTransition::~ScreenTransition()
 {
 }
 
-void ScreenTransition::loadContent(ALLEGRO_BITMAP* givenImage, std::string givenText, double givenPosition[2])
+void ScreenTransition::update(Animation& currentAnimation)
 {
-	Animation::loadContent(givenImage, givenText, givenPosition);
-	transitionSpeed = 5;
-	increase = false;
-}
-
-void ScreenTransition::unloadContent()
-{
-	Animation::unloadContent();
-	transitionSpeed = 0;
-}
-
-void ScreenTransition::update(InputManagement input)
-{
-	if (isActive)
+	if (currentAnimation.getIsActive())
 	{
 		if (!increase)
-			alpha -= transitionSpeed;
+			currentAnimation.getAlpha() -= transitionSpeed;
 		else
-			alpha += transitionSpeed;
+			currentAnimation.getAlpha() += transitionSpeed;
 			
-		if (alpha <= 0)
+		if (currentAnimation.getAlpha() <= 0)
 		{
-			alpha = 0;
+			currentAnimation.getAlpha() = 0;
 			increase = true;
 		}
-		else if (alpha >= 255)
+		else if (currentAnimation.getAlpha() >= 255)
 		{
-			alpha = 255;
+			currentAnimation.getAlpha() = 255;
 			increase = false;
 		}
 	}
 	else
-		alpha = 255;
+		currentAnimation.getAlpha() = 255;
 }
 
-void ScreenTransition::setAlpha(double givenInput)
+void ScreenTransition::setIncrease(bool givenInput)
 {
-	alpha = givenInput;
-	
-	if (alpha == 0)
-		increase = true;
-	else if (alpha == 255)
-		increase = false;
+	increase = givenInput;
 }

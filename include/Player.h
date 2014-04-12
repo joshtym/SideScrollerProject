@@ -19,16 +19,16 @@ class Player
 		void setFlip(bool);
 		int jCount = 0;
 		bool jump = false;
-		int floor = 300;
+		double floor = 300;
 		int jumpCounter = 0;
 		
 		//x and y are image
 		int imgWidth;
 		int imgHeight;
-		int x;
-		int y;
-		int xWidth;
-		int yHeight;
+		double x;
+		double y;
+		double xWidth;
+		double yHeight;
 		
 		Animation playerAnimation;
 		SpriteSheet ssAnimation;
@@ -40,12 +40,12 @@ class Player
 		void unloadPlayer();
 		void update(ALLEGRO_EVENT);
 		void move(ALLEGRO_EVENT);
-		void draw();
+		void draw(ALLEGRO_DISPLAY*);
 		void gravityTick();
 		void jumpTick();
-		int getX();
-		int getY();
-		void setFloor(int);
+		double getX();
+		double getY();
+		void setFloor(double);
 		
 };
 #endif

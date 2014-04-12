@@ -33,10 +33,11 @@ void ScreenManager::Initialize()
 
 void ScreenManager::addScreen(GameScreenInterface *screen)
 {
-	transition.setAlpha(0);
+	transition.getAlpha() = 0;
+	screenT.setIncrease(true);
 	startOfTransition = true;
 	newScreen = screen;
-	transition.setIsActive(true);
+	transition.getIsActive() = true;
 }
 
 void ScreenManager::loadContent()
@@ -50,7 +51,7 @@ void ScreenManager::loadContent()
 
 void ScreenManager::unloadContent()
 {
-	al_destroy_bitmap(transitionImage);
+	//al_destroy_bitmap(transitionImage);
 	transition.unloadContent();
 }
 
@@ -68,15 +69,15 @@ void ScreenManager::draw(ALLEGRO_DISPLAY *display)
 	currentScreen->draw(display);
 	
 	if(startOfTransition)
-		transition.draw(display);
+		transition.draw(display, 0, 0);
 }
 
 void ScreenManager::transitionHandler()
 {
-	transition.update(currentScreen->getInput());
+	screenT.update(transition);
 	if (transition.getAlpha() >= 255)
 	{
-		transition.setAlpha(255);
+		transition.getAlpha() = 255;
 		currentScreen->unloadContent();
 		delete currentScreen;
 		currentScreen = newScreen;
@@ -86,6 +87,6 @@ void ScreenManager::transitionHandler()
 	else if (transition.getAlpha() <= 0)
 	{
 		startOfTransition = false;
-		transition.setIsActive(false);
+		transition.getIsActive() = false;
 	}
 }

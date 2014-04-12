@@ -44,7 +44,7 @@ void Player::move(ALLEGRO_EVENT e)
 }
 
 
-void Player::setFloor(int fl)
+void Player::setFloor(double fl)
 {	
 	floor = fl;
 }
@@ -100,12 +100,12 @@ void Player::setX(int speed)
 	x += speed;
 }
 
-int Player::getX()
+double Player::getX()
 {
 	return x;
 }
 
-int Player::getY()
+double Player::getY()
 {
 	return y;
 }
@@ -134,14 +134,9 @@ void Player::update(ALLEGRO_EVENT ev)
 	move(ev);
 	jumpTick();
 	gravityTick();
-	move(ev);
 }
 
-void Player::draw()
+void Player::draw(ALLEGRO_DISPLAY *display)
 {
-	if (!flip)
-		al_draw_bitmap(playerBitmap, x, y, 0);
-	else
-		al_draw_bitmap(playerBitmap, x, y, ALLEGRO_FLIP_HORIZONTAL);
-
+	playerAnimation.draw(display, x, y);
 }

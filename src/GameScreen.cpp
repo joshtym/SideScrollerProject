@@ -11,6 +11,7 @@ GameScreen::GameScreen()
 GameScreen::~GameScreen()
 {
 	delete userPlayer;
+	delete userPlatform;
 }
  
 void GameScreen::loadContent()
@@ -35,6 +36,6 @@ void GameScreen::updateContent(ALLEGRO_EVENT ev)
 void GameScreen::draw(ALLEGRO_DISPLAY *display)
 {
 	al_draw_bitmap(bitmap, 0, 0, 0);
-	userPlayer->draw();
+	userPlayer->draw(display);
 	userPlatform ->draw();
 }

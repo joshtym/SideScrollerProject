@@ -12,14 +12,12 @@ class Animation
 	public:
 		Animation();
 		~Animation();
-		virtual void loadContent(ALLEGRO_BITMAP* image, std::string text, double position[2]);
-		virtual void unloadContent();
-		virtual void update(InputManagement);
-		void draw(ALLEGRO_DISPLAY *display);
-		virtual void setAlpha(double);
-		double getAlpha();
-		void setIsActive(bool);
-		bool getIsActive();
+		void loadContent(ALLEGRO_BITMAP*, std::string, double[]);
+		void unloadContent();
+		virtual void update(Animation&);
+		void draw(ALLEGRO_DISPLAY*, double, double);
+		double& getAlpha();
+		bool& getIsActive();
 		std::pair<int, int> &modifiableFrameCount();
 		std::pair<int, int> &modifiableCurrentFrame();
 		std::pair<int, int> &getFrameDimensions();

@@ -21,7 +21,8 @@ class ScreenManager
 		ScreenManager(const ScreenManager&);
 		ScreenManager& operator=(const ScreenManager&);
 		ALLEGRO_BITMAP* transitionImage;
-		ScreenTransition transition;
+		Animation transition;
+		ScreenTransition screenT;
 		//GameScreen *currentScreen, *newScreen;
 		void transitionHandler();
 		bool startOfTransition;

@@ -3,7 +3,6 @@
 
 #include "GameScreenInterface.h"
 #include "Player.h"
-#include "Platform.h"
 #include "CollisionDetection.h"
 
 class GameScreen : public GameScreenInterface

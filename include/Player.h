@@ -7,8 +7,6 @@
 #include "SpriteSheet.h"
 #include "ObjectDimensions.h"
 
-enum Direction {DOWN, LEFT, RIGHT, UP};
-
 class Player 
 {
 	private:
@@ -22,7 +20,6 @@ class Player
 		double stageFloor = 388;
 		int jumpCounter = 0;
 		int lastXPosition = 0;
-		Direction direction;
 		
 		Animation playerAnimation;
 		SpriteSheet ssAnimation;
@@ -42,7 +39,7 @@ class Player
 		void setY(double);
 		void setXStatic();
 		int getLastXPosition();
-		ObjectDimensions getCurrentDimensions();
+		ObjectDimensions& getCurrentDimensions();
 };
 #endif
  

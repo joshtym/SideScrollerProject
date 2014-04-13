@@ -16,7 +16,6 @@ class GameScreen : public GameScreenInterface
 		int time;
 		int imageXValue;
 		int platformXValue;
-		int randomObject;
 		
 	public:
 		GameScreen();

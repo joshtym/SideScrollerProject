@@ -23,19 +23,20 @@ void Player::movePlayer(ALLEGRO_EVENT e)
 	{
 		case ALLEGRO_KEY_S:
 			playerAnimation.getIsActive() = true;
-			direction = Direction::DOWN;
+			playerDimensions.setDirection(Direction::DOWN);
 			break;
 		case ALLEGRO_KEY_W:
 			playerAnimation.getIsActive() = true;
-			direction = Direction::UP;
+			playerDimensions.setDirection(Direction::UP);
 			break;
 		case ALLEGRO_KEY_D:
 			playerAnimation.getIsActive() = true;
-			direction = Direction::RIGHT;
+			playerDimensions.setDirection(Direction::RIGHT);
 			playerDimensions.setMinX(playerDimensions.getMinX() + moveSpeed);
 			break;
 		case ALLEGRO_KEY_SPACE:
 			playerAnimation.getIsActive() = true;
+			playerDimensions.setDirection(Direction::DOWN);
 			if(floor > 0 && playerDimensions.getMinY() == floor)
 			{
 				setY(0-moveSpeed);
@@ -51,7 +52,7 @@ void Player::movePlayer(ALLEGRO_EVENT e)
 			break;
 		case ALLEGRO_KEY_A:
 			playerAnimation.getIsActive() = true;
-			direction = Direction::LEFT;
+			playerDimensions.setDirection(Direction::LEFT);
 			playerDimensions.setMinX(playerDimensions.getMinX() - moveSpeed);
 			break;
 		default:
@@ -119,12 +120,12 @@ void Player::loadPlayer()
 	playerDimensions.setImgWidth(al_get_bitmap_width(playerBitmap) / 3);
 	playerDimensions.setImgHeight(al_get_bitmap_height(playerBitmap) / 4);
 	playerDimensions.updateValues();
+	playerDimensions.setDirection(Direction::DOWN);
 	
 	double position[] = {playerDimensions.getMinX(), playerDimensions.getMinY()};
 	playerAnimation.loadContent(playerBitmap, "", position);
 	
 	playerAnimation.getIsActive() = true;
-	direction = Direction::DOWN;
 }
 
 
@@ -141,8 +142,9 @@ void Player::update(ALLEGRO_EVENT ev, InputManagement input)
 	movePlayer(ev);
 	jumpTick();
 	gravityTick();
+	playerDimensions.updateValues();
 	
-	playerAnimation.modifiableCurrentFrame().second = direction;
+	playerAnimation.modifiableCurrentFrame().second = playerDimensions.getCurrentDirection();
 	ssAnimation.update(playerAnimation);
 }
 
@@ -152,7 +154,7 @@ void Player::draw(ALLEGRO_DISPLAY *display)
 						 playerDimensions.getMinY());
 }
 
-ObjectDimensions Player::getCurrentDimensions()
+ObjectDimensions& Player::getCurrentDimensions()
 {
 	return playerDimensions;
 }

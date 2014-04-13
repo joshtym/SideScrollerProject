@@ -38,6 +38,11 @@ double ObjectDimensions::getImgHeight()
 	return imgHeight;
 }
 
+Direction ObjectDimensions::getCurrentDirection()
+{
+	return currentDirection;
+}
+
 void ObjectDimensions::setMinX(double userGivenMinX)
 {
 	xMin = userGivenMinX;
@@ -68,8 +73,14 @@ void ObjectDimensions::setImgHeight(double userGivenImgHeight)
 	imgHeight = userGivenImgHeight;
 }
 
+void ObjectDimensions::setDirection(Direction userGivenDirection)
+{
+	currentDirection = userGivenDirection;
+}
+
 void ObjectDimensions::updateValues()
 {
+	
 	xMax = xMin + imgWidth;
 	yMax = yMin + imgHeight;
 }

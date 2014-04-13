@@ -16,9 +16,9 @@ class Platform
 		~Platform();
 		void loadPlatform();
 		void unloadPlatform();
-		void update(double, double);
+		void update(double);
 		void draw();
-		ObjectDimensions getCurrentDimensions();
+		ObjectDimensions& getCurrentDimensions();
 };
 #endif
  

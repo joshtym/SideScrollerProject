@@ -1,6 +1,8 @@
 #ifndef OBJECTDIMENSIONS_H
 #define OBJECTDIMENSIONS_H
 
+enum Direction {DOWN, LEFT, RIGHT, UP};
+
 class ObjectDimensions
 {	
 	public:
@@ -13,6 +15,7 @@ class ObjectDimensions
 		double getMaxY();
 		double getImgWidth();
 		double getImgHeight();
+		Direction getCurrentDirection();
 		
 		void setMinX(double);
 		void setMinY(double);
@@ -20,6 +23,7 @@ class ObjectDimensions
 		void setMaxY(double);
 		void setImgWidth(double);
 		void setImgHeight(double);
+		void setDirection(Direction);
 		
 		void updateValues();
 		
@@ -30,5 +34,6 @@ class ObjectDimensions
 		double yMax;
 		double imgWidth;
 		double imgHeight;
+		Direction currentDirection;
 };
 #endif

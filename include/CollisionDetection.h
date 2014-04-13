@@ -9,20 +9,22 @@
 #include <allegro5/allegro_acodec.h>
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_ttf.h>
-#include "Player.h"
+#include "ObjectDimensions.h"
 
 class CollisionDetection
 {
-	private:
-		Player* p;
-		
-		
 	public:
 		CollisionDetection();
-		CollisionDetection(Player*);
 		~CollisionDetection();
-		void calculateFloor();
-		void setPlayer(Player*);
+		
+		bool checkForCollision(ObjectDimensions, ObjectDimensions);
+		void fixCollision(ObjectDimensions&, ObjectDimensions&);
+		
+	private:
+		void fixCollisionLeftSide(ObjectDimensions&, ObjectDimensions&);
+		void fixCollisionRightSide(ObjectDimensions&, ObjectDimensions&);
+		void fixCollisionTopPlatform(ObjectDimensions&, ObjectDimensions&);
+		void fixCollisionBottomPlatform(ObjectDimensions&, ObjectDimensions&);
 };
 
 

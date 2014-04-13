@@ -5,7 +5,7 @@
 Platform::Platform()
 {
 	platformDimension.setMinX(800);
-	platformDimension.setMinY(320);
+	platformDimension.setMinY(325);
 }
  
 Platform::~Platform()
@@ -26,10 +26,9 @@ void Platform::unloadPlatform()
 	al_destroy_bitmap(platformBitmap);
 }
 
-void Platform::update(double platformXValue, double platformYValue)
+void Platform::update(double platformXValue)
 {
 	platformDimension.setMinX(platformXValue);
-	platformDimension.setMinY(platformYValue);
 	platformDimension.updateValues();
 }
 
@@ -39,7 +38,7 @@ void Platform::draw()
 				   platformDimension.getMinY(), 0);
 }
 
-ObjectDimensions Platform::getCurrentDimensions()
+ObjectDimensions& Platform::getCurrentDimensions()
 {
 	return platformDimension;
 }

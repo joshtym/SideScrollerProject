@@ -1,13 +1,11 @@
 #include "GameScreen.h"
 #include "Platform.h"
-#include "TdObject.h"
 #include <iostream>
 
 GameScreen::GameScreen()
 {
 	userPlayer = new Player();
 	userPlatform = new Platform();
-	cd.setPlayer(userPlayer);
 	time = 0;
 	imageXValue = 0;
 	platformXValue = 0;
@@ -34,11 +32,6 @@ void GameScreen::unloadContent()
 
 void GameScreen::updateContent(ALLEGRO_EVENT ev)
 {
-	//userPlayer->detectFloor(userPlatform->getTdo());
-	
-	//if(userPlayer->detectCollision(userPlatform->getTdo()))
-	//	userPlayer->setXStatic();
-	
 	time++;
 	
 	imageXValue = time*-2;
@@ -54,8 +47,10 @@ void GameScreen::updateContent(ALLEGRO_EVENT ev)
 			al_draw_bitmap(bitmap, (imageXValue+1600), 0, 0);
 			
 	userPlayer->update(ev, input);
-	userPlatform->update(platformXValue, 200);
+	userPlatform->update(platformXValue);
 	
+	if (cd.checkForCollision(userPlayer->getCurrentDimensions(), userPlatform->getCurrentDimensions()))
+		cd.fixCollision(userPlayer->getCurrentDimensions(), userPlatform->getCurrentDimensions());
 }
 
 void GameScreen::draw(ALLEGRO_DISPLAY *display)

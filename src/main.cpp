@@ -21,7 +21,7 @@ int main()
 	const double FPS = 60;
 	Display d(800, 600);
 	
-	ALLEGRO_TIMER *timer = al_create_timer (1.0 / FPS);
+	ALLEGRO_TIMER *timer = al_create_timer (1.0 / 60);
 	ALLEGRO_EVENT_QUEUE *event_queue = al_create_event_queue();
 	ALLEGRO_KEYBOARD_STATE keyState;
 	

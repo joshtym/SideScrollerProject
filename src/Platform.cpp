@@ -4,61 +4,21 @@
  
 Platform::Platform()
 {
-	x = 100;
-	y = 320;
-	tdo = new TdObject();
+	platformDimension.setMinX(800);
+	platformDimension.setMinY(320);
 }
  
 Platform::~Platform()
 {
-	delete tdo;
-}
-
-
-
-void Platform::setY(int yin)
-{
-
-	y = yin;
-		
-	
-}
-
-void Platform::setX(int xin)
-{
-	x = xin;
-}
-
-int Platform::getX()
-{
-	return x;
-}
-
-int Platform::getY()
-{
-	return y;
 }
  
 void Platform::loadPlatform()
 {
 	platformBitmap = al_load_bitmap("./imgFiles/basicPlatform1.png");
-	imgWidth =  al_get_bitmap_width(platformBitmap);
-	imgHeight = al_get_bitmap_height(platformBitmap);
-
-	xWidth = imgWidth;
-	yHeight = imgHeight;
+	platformDimension.setImgWidth(al_get_bitmap_width(platformBitmap));
+	platformDimension.setImgHeight(al_get_bitmap_height(platformBitmap));
 	
-	tdo->setX(x);
-	tdo->setY(y);
-	tdo->setYHeight(yHeight);
-	tdo->setXWidth(xWidth);
-	
-	tdo->calcMixMax();
-}
-
-TdObject* Platform::getTdo()
-{
-	return tdo;
+	platformDimension.updateValues();
 }
 
 void Platform::unloadPlatform()
@@ -66,8 +26,20 @@ void Platform::unloadPlatform()
 	al_destroy_bitmap(platformBitmap);
 }
 
+void Platform::update(double platformXValue, double platformYValue)
+{
+	platformDimension.setMinX(platformXValue);
+	platformDimension.setMinY(platformYValue);
+	platformDimension.updateValues();
+}
+
 void Platform::draw()
 {
-	al_draw_bitmap(platformBitmap, x, y, 0);
+	al_draw_bitmap(platformBitmap, platformDimension.getMinX(), 
+				   platformDimension.getMinY(), 0);
+}
 
+ObjectDimensions Platform::getCurrentDimensions()
+{
+	return platformDimension;
 }

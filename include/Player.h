@@ -1,12 +1,13 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-
-#include "SpriteSheet.h"
 #include <allegro5/allegro.h>
 #include <allegro5/keyboard.h>
-#include "TdObject.h"
+#include "InputManagement.h"
+#include "SpriteSheet.h"
+#include "ObjectDimensions.h"
 
+enum Direction {DOWN, LEFT, RIGHT, UP};
 
 class Player 
 {
@@ -21,44 +22,27 @@ class Player
 		double stageFloor = 388;
 		int jumpCounter = 0;
 		int lastXPosition = 0;
-		TdObject *tdo;
-		enum Direction {DOWN, LEFT, RIGHT, UP};
 		Direction direction;
-		
-		
-		
-		//x and y are image
-		int imgWidth;
-		int imgHeight;
-		double x;
-		double y;
-		double xWidth;
-		double yHeight;
 		
 		Animation playerAnimation;
 		SpriteSheet ssAnimation;
+		ObjectDimensions playerDimensions;
 		
 	public:
 		Player();
 		~Player();
 		void loadPlayer();
 		void unloadPlayer();
-		void update(ALLEGRO_EVENT);
-		void move(ALLEGRO_EVENT);
+		void update(ALLEGRO_EVENT, InputManagement);
+		void movePlayer(ALLEGRO_EVENT);
 		void draw(ALLEGRO_DISPLAY*);
 		void gravityTick();
 		void jumpTick();
-		double getX();
-		double getY();
 		void setFloor(double);
-		void setX(int);
-		void setY(int);
+		void setY(double);
 		void setXStatic();
-		bool detectCollision(TdObject*);
 		int getLastXPosition();
-		void detectFloor(TdObject* iTdo);
-
-		
+		ObjectDimensions getCurrentDimensions();
 };
 #endif
  

@@ -1,7 +1,6 @@
 #ifndef COLLISION_DETECTION_H
 #define COLLISION_DETECTION_H
 
-
 // Allegro Inits
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_native_dialog.h>
@@ -24,8 +23,6 @@ class CollisionDetection
 		~CollisionDetection();
 		void calculateFloor();
 		void setPlayer(Player*);
-		
-
 };
 
 

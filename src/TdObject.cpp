@@ -1,10 +1,9 @@
 #include "TdObject.h"
+#include <iostream>
 
  
 TdObject::TdObject()
 {
-	
-	
 }
 
 int TdObject::getX()
@@ -45,19 +44,21 @@ int TdObject::getMinX()
 {
 	return xMin;
 }
+
 int TdObject::getMaxX()
 {
 	return xMax;
 }
+
 int TdObject::getMinY()
 {
 	return yMin;
 }
+
 int TdObject::getMaxY()
 {
 	return yMax;
 }
-
 
 void TdObject::calcMixMax()
 {
@@ -72,17 +73,16 @@ void TdObject::calcMixMax()
 bool TdObject::isColliding(TdObject *iTdo)
 {
 	calcMixMax();
+	//std::cout << "MinY of Player: " << yMin << std::endl;
 	if(!(xMax < iTdo->getMinX() || xMin > iTdo->getMaxX() ))
 	{
+		//std::cout << "MaxY of Platform: " << iTdo->getMaxY() << std::endl;
 		if(!(yMax < iTdo->getMinY() || yMin > iTdo->getMaxY()))
 		{
 			return true;
 		}
 	}
 	return false;
-	
-	
-
 }
 
 

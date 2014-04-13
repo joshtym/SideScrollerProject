@@ -51,7 +51,6 @@ void ScreenManager::loadContent()
 
 void ScreenManager::unloadContent()
 {
-	//al_destroy_bitmap(transitionImage);
 	transition.unloadContent();
 }
 

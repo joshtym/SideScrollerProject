@@ -14,10 +14,14 @@ class InputManagement
 		InputManagement();
 		~InputManagement();
 		
-		bool isKeyPressed(ALLEGRO_EVENT ev, int key);
-		bool isKeyPressed(ALLEGRO_EVENT ev, std::vector<int> keys);
+		void update();
+		
+		bool isKeyPressed(ALLEGRO_EVENT, int);
+		bool isKeyPressed(ALLEGRO_EVENT, std::vector<int>);
 		
 		bool isKeyReleased(ALLEGRO_EVENT ev, int key);
 		bool isKeyReleased(ALLEGRO_EVENT ev, std::vector<int> keys);
+		
+		bool isKeyDown(int);
 };
 #endif

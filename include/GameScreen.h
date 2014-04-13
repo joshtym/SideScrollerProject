@@ -8,15 +8,6 @@
 
 class GameScreen : public GameScreenInterface
 {
-	private:
-		Player *userPlayer;
-		Platform *userPlatform;
-		ALLEGRO_BITMAP *bitmap;
-		CollisionDetection cd;
-		int time;
-		int imageXValue;
-		int platformXValue;
-		
 	public:
 		GameScreen();
 		~GameScreen();
@@ -26,5 +17,13 @@ class GameScreen : public GameScreenInterface
 		void updateContent(ALLEGRO_EVENT ev);
 		void draw(ALLEGRO_DISPLAY*);
 		
+	private:
+		Player *userPlayer;
+		Platform *userPlatform;
+		ALLEGRO_BITMAP *bitmap;
+		CollisionDetection cd;
+		int time;
+		int imageXValue;
+		int platformXValue;
 };
 #endif

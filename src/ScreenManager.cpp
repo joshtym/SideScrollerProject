@@ -2,14 +2,13 @@
 #include "TitleScreen.h"
 #include "SplashScreen.h"
 
-GameScreenInterface *currentScreen, *newScreen;
-
 ScreenManager::ScreenManager()
 {
 }
 
 ScreenManager::~ScreenManager()
 {
+	delete currentScreen;
 }
 
 ScreenManager::ScreenManager(const ScreenManager& screen)
@@ -46,7 +45,7 @@ void ScreenManager::loadContent()
 	currentScreen->loadContent();
 	transitionImage = al_load_bitmap("./imgFiles/black-wallpapers.jpg");
 	double position[] = {0,0};
-	transition.loadContent(transitionImage, "", position);
+	transition.loadContent(transitionImage, position);
 }
 
 void ScreenManager::unloadContent()
@@ -81,7 +80,6 @@ void ScreenManager::transitionHandler()
 		delete currentScreen;
 		currentScreen = newScreen;
 		currentScreen->loadContent();
-		//al_rest(1.0);
 	}
 	else if (transition.getAlpha() <= 0)
 	{

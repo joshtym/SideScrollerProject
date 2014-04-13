@@ -1,43 +1,32 @@
 #include "ScreenManager.h"
 #include "InputManagement.h"
 #include "Display.h"
-#include "TitleScreen.h"
-#include "SplashScreen.h"
-#include <iostream>
 #include <vector>
-
-#include <allegro5/allegro_native_dialog.h>
-#include <allegro5/allegro_image.h>
-#include <allegro5/allegro_audio.h>
-#include <allegro5/allegro_acodec.h>
-#include <allegro5/allegro_font.h>
-#include <allegro5/allegro_ttf.h>
 
 int main()
 {
+	const double FPS = 60;
+	
 	int screenWidth, screenHeight;
+	std::vector<int> keys;
+	ALLEGRO_KEYBOARD_STATE keyState;
+	bool completed;
+	InputManagement input;
+	
+	completed = false;
 	screenWidth = 800;
 	screenHeight = 600;
-	const double FPS = 60;
-	Display d(800, 600);
-	
-	ALLEGRO_TIMER *timer = al_create_timer (1.0 / 60);
+	Display d(screenWidth, screenHeight);
+	ALLEGRO_TIMER *timer = al_create_timer (1.0 / FPS);
 	ALLEGRO_EVENT_QUEUE *event_queue = al_create_event_queue();
-	ALLEGRO_KEYBOARD_STATE keyState;
 	
 	al_register_event_source(event_queue, al_get_keyboard_event_source());
 	al_register_event_source(event_queue, al_get_timer_event_source(timer));
 	al_register_event_source(event_queue, al_get_display_event_source(d.getAllegroDisplay()));
 	
-	bool completed = false;
-	
-	InputManagement input;
+	keys.push_back(ALLEGRO_KEY_ESCAPE);
 	ScreenManager::GetInstance().Initialize();
 	ScreenManager::GetInstance().loadContent();
-	
-	std::vector<int> keys;
-	
-	keys.push_back(ALLEGRO_KEY_ESCAPE);
 	
 	al_start_timer(timer);
 	

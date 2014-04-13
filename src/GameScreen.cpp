@@ -1,11 +1,12 @@
 #include "GameScreen.h"
-#include "Platform.h"
+#include "BlockPlatform.h"
+#include "BusObject.h"
 #include <iostream>
 
 GameScreen::GameScreen()
 {
 	userPlayer = new Player();
-	userPlatform = new Platform();
+	userPlatform = new BusObject();
 	time = 0;
 	imageXValue = 0;
 	platformXValue = 0;
@@ -28,6 +29,7 @@ void GameScreen::unloadContent()
 {
 	userPlayer->unloadPlayer();
 	userPlatform ->unloadPlatform();
+	al_destroy_bitmap(bitmap);
 }
 
 void GameScreen::updateContent(ALLEGRO_EVENT ev)

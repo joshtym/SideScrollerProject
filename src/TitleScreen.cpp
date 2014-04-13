@@ -19,6 +19,7 @@ void TitleScreen::loadContent()
 
 void TitleScreen::unloadContent()
 {
+	al_destroy_bitmap(bitmap);
 }
 
 void TitleScreen::updateContent(ALLEGRO_EVENT ev)

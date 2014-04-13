@@ -2,7 +2,6 @@
 #define GAMESCREENINTERFACE_H
 
 #include "InputManagement.h"
-#include <allegro5/allegro.h>
 
 /// Class that defines an Interface for all Game Screens
 /**
@@ -10,10 +9,7 @@
  * game screen related creations
 **/
 class GameScreenInterface
-{
-	protected:
-		InputManagement input;
-		
+{		
 	public:
 		GameScreenInterface();
 		~GameScreenInterface();
@@ -41,5 +37,8 @@ class GameScreenInterface
 		virtual void draw(ALLEGRO_DISPLAY*);
 		
 		InputManagement getInput();
+		
+	protected:
+		InputManagement input;
 };
 #endif

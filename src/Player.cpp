@@ -4,6 +4,15 @@ Player::Player()
 {
 	playerDimensions.setMinX(10);
 	playerDimensions.setMinY(388);
+	
+	tick = 0;
+	moveSpeed = 5;
+	jCount = 0;
+	jump = false;
+	floor = -10;
+	stageFloor = 388;
+	jumpCounter = 0;
+	lastXPosition = 0;
 }
  
 Player::~Player()
@@ -123,7 +132,7 @@ void Player::loadPlayer()
 	playerDimensions.setDirection(Direction::DOWN);
 	
 	double position[] = {playerDimensions.getMinX(), playerDimensions.getMinY()};
-	playerAnimation.loadContent(playerBitmap, "", position);
+	playerAnimation.loadContent(playerBitmap, position);
 	
 	playerAnimation.getIsActive() = true;
 }

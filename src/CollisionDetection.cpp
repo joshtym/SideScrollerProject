@@ -62,29 +62,3 @@ void CollisionDetection::fixCollisionBottomPlatform(ObjectDimensions& player, Ob
 				if ((obj.getMaxY() - player.getMinY()) < (player.getMaxY() - obj.getMinY()))
 					player.setMinY(player.getMinY() + (obj.getMaxY() - player.getMinY()));
 }
-
-/*bool CollisionDetection::isColliding(TdObject *iTdo)
-{
-	calcMixMax();
-	//std::cout << "MinY of Player: " << yMin << std::endl;
-	if(!(xMax < iTdo->getMinX() || xMin > iTdo->getMaxX() ))
-	{
-		//std::cout << "MaxY of Platform: " << iTdo->getMaxY() << std::endl;
-		if(!(yMax < iTdo->getMinY() || yMin > iTdo->getMaxY()))
-		{
-			return true;
-		}
-	}
-	return false;
-	* 
-	* 
-	if (!(player.getMaxX() < obj.getMinX() || player.getMinX() > obj.getMaxX()))
-	{
-		if (player.getMaxY() < obj.getMinY() || player.getMinY() > obj.getMaxY())
-			return 0;
-		else if (player.getMaxY() >= obj.getMinY() && player.getMinY() < obj.getMinY())
-			return 1;
-		else if (player.getMinY() <= obj.getMaxY() && player.getMaxY() > obj.getMaxY())
-			return 2;
-	}
-}*/

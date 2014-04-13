@@ -4,10 +4,7 @@
 #include "ScreenManager.h"
 
 class TitleScreen : public GameScreenInterface
-{
-	private:
-		ALLEGRO_BITMAP *bitmap;
-		
+{	
 	public:
 		TitleScreen();
 		~TitleScreen();
@@ -15,5 +12,8 @@ class TitleScreen : public GameScreenInterface
 		void unloadContent();
 		void updateContent(ALLEGRO_EVENT ev);
 		void draw(ALLEGRO_DISPLAY *display);
+		
+	private:
+		ALLEGRO_BITMAP *bitmap;
 };
 #endif

@@ -1,30 +1,13 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include <allegro5/allegro.h>
 #include <allegro5/keyboard.h>
 #include "InputManagement.h"
 #include "SpriteSheet.h"
 #include "ObjectDimensions.h"
 
 class Player 
-{
-	private:
-		ALLEGRO_BITMAP *playerBitmap;
-		
-		int tick = 0;
-		int moveSpeed = 5;
-		int jCount = 0;
-		bool jump = false;
-		double floor = -10;
-		double stageFloor = 388;
-		int jumpCounter = 0;
-		int lastXPosition = 0;
-		
-		Animation playerAnimation;
-		SpriteSheet ssAnimation;
-		ObjectDimensions playerDimensions;
-		
+{	
 	public:
 		Player();
 		~Player();
@@ -40,6 +23,21 @@ class Player
 		void setXStatic();
 		int getLastXPosition();
 		ObjectDimensions& getCurrentDimensions();
+		
+	private:
+		ALLEGRO_BITMAP *playerBitmap;
+		Animation playerAnimation;
+		SpriteSheet ssAnimation;
+		ObjectDimensions playerDimensions;
+		
+		int tick;
+		int moveSpeed;
+		int jCount;
+		bool jump;
+		double floor;
+		double stageFloor;
+		int jumpCounter;
+		int lastXPosition;
 };
 #endif
  

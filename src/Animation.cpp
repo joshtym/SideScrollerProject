@@ -9,10 +9,9 @@ Animation::~Animation()
 {
 }
 
-void Animation::loadContent(ALLEGRO_BITMAP* givenImage, std::string givenText, double givenPosition[2])
+void Animation::loadContent(ALLEGRO_BITMAP* givenImage, double givenPosition[2])
 {
 	image = givenImage;
-	text = givenText;
 	position[0] = givenPosition[0];
 	position[1] = givenPosition[1];
 	

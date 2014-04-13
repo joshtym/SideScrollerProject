@@ -1,25 +1,7 @@
 #include "Platform.h"
 #include <iostream>
-#include <stdio.h>
- 
-Platform::Platform()
-{
-	platformDimension.setMinX(800);
-	platformDimension.setMinY(325);
-}
- 
-Platform::~Platform()
-{
-}
- 
-void Platform::loadPlatform()
-{
-	platformBitmap = al_load_bitmap("./imgFiles/basicPlatform1.png");
-	platformDimension.setImgWidth(al_get_bitmap_width(platformBitmap));
-	platformDimension.setImgHeight(al_get_bitmap_height(platformBitmap));
-	
-	platformDimension.updateValues();
-}
+#include <cstdlib>
+#include <ctime>
 
 void Platform::unloadPlatform()
 {

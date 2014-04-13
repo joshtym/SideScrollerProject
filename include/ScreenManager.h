@@ -3,7 +3,6 @@
 
 #include "GameScreenInterface.h"
 #include "ScreenTransition.h"
-#include <iostream>
 
 // Allegro Inits
 #include <allegro5/allegro.h>
@@ -16,17 +15,6 @@
 
 class ScreenManager
 {
-	private:
-		ScreenManager();
-		ScreenManager(const ScreenManager&);
-		ScreenManager& operator=(const ScreenManager&);
-		ALLEGRO_BITMAP* transitionImage;
-		Animation transition;
-		ScreenTransition screenT;
-		//GameScreen *currentScreen, *newScreen;
-		void transitionHandler();
-		bool startOfTransition;
-	
 	public:
 		~ScreenManager();
 		static ScreenManager &GetInstance();
@@ -36,5 +24,16 @@ class ScreenManager
 		void unloadContent();
 		void update(ALLEGRO_EVENT ev);
 		void draw(ALLEGRO_DISPLAY *display);
+		
+	private:
+		ScreenManager();
+		ScreenManager(const ScreenManager&);
+		ScreenManager& operator=(const ScreenManager&);
+		ALLEGRO_BITMAP* transitionImage;
+		Animation transition;
+		ScreenTransition screenT;
+		GameScreenInterface *currentScreen, *newScreen;
+		void transitionHandler();
+		bool startOfTransition;
 };
 #endif

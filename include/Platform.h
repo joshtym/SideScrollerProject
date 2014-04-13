@@ -7,18 +7,16 @@
 
 class Platform 
 {
-	private:
+	public:
+		virtual void loadPlatform() = 0;
+		virtual void unloadPlatform();
+		virtual void update(double);
+		virtual void draw();
+		virtual ObjectDimensions& getCurrentDimensions();
+		
+	protected:
 		ALLEGRO_BITMAP *platformBitmap;
 		ObjectDimensions platformDimension;
-		
-	public:
-		Platform();
-		~Platform();
-		void loadPlatform();
-		void unloadPlatform();
-		void update(double);
-		void draw();
-		ObjectDimensions& getCurrentDimensions();
 };
 #endif
  

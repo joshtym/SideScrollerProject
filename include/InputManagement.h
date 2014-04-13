@@ -7,9 +7,6 @@
 
 class InputManagement
 {
-	private:
-		ALLEGRO_KEYBOARD_STATE keyState;
-		
 	public:
 		InputManagement();
 		~InputManagement();
@@ -23,5 +20,8 @@ class InputManagement
 		bool isKeyReleased(ALLEGRO_EVENT ev, std::vector<int> keys);
 		
 		bool isKeyDown(int);
+		
+	private:
+		ALLEGRO_KEYBOARD_STATE keyState;
 };
 #endif

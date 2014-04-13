@@ -5,10 +5,6 @@
 
 class SplashScreen : public GameScreenInterface
 {
-	private:
-		ALLEGRO_FONT *font;
-		ALLEGRO_BITMAP *bitmap;
-		
 	public:
 		SplashScreen();
 		~SplashScreen();
@@ -17,5 +13,9 @@ class SplashScreen : public GameScreenInterface
 		void unloadContent();
 		void updateContent(ALLEGRO_EVENT ev);
 		void draw(ALLEGRO_DISPLAY *display);
+		
+	private:
+		ALLEGRO_FONT *font;
+		ALLEGRO_BITMAP *bitmap;
 };
 #endif

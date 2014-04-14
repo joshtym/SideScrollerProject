@@ -54,7 +54,7 @@ void GameScreen::updateContent(ALLEGRO_EVENT ev)
 			
 	userPlayer->update(ev, input);
 	userPlatform->update(platformXValue);
-	isCollidingWithObject = cd.checkForCollision(userPlayer->getCurrentDimensions(), userPlatform->getCurrentDimensions());
+	isCollidingWithObject = cd.checkForCollision(userPlayer->getCurrentDimensions(), userPlatform1->getCurrentDimensions());
 	isCollidingWithEdge = cd.checkForPlayerAtEdgeOfScreen(userPlayer->getCurrentDimensions());
 	
 	if (isCollidingWithObject && isCollidingWithEdge)

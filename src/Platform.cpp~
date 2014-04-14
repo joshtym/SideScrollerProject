@@ -21,7 +21,7 @@ void Platform::draw()
 
 	al_draw_bitmap(platformBitmap2, platformDimension.getMinX(), 
 				   platformDimension.getMinY()+50, 0);
-	
+	//platformDimension.setMinY(platformDimension.getMinY()+50);
 }
 
 ObjectDimensions& Platform::getCurrentDimensions()

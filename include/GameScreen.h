@@ -37,6 +37,6 @@ class GameScreen : public GameScreenInterface
 		bool isCollidingOnPlatformTop;
 		ALLEGRO_FONT *font;
 		ostringstream oss;
-		int score = 0;
+		int score;
 };
 #endif

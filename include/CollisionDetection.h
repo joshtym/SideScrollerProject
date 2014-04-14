@@ -14,12 +14,14 @@ class CollisionDetection
 		void fixCollision(ObjectDimensions&, ObjectDimensions&);
 		void fixCollisionAtEdgeOfScreen(ObjectDimensions&);
 		bool isOnTopPlatform(ObjectDimensions&, ObjectDimensions&);
+		bool getIsOnPlatform();
 		
 	private:
 		void fixCollisionLeftSide(ObjectDimensions&, ObjectDimensions&);
 		void fixCollisionRightSide(ObjectDimensions&, ObjectDimensions&);
 		void fixCollisionTopPlatform(ObjectDimensions&, ObjectDimensions&);
 		void fixCollisionBottomPlatform(ObjectDimensions&, ObjectDimensions&);
+		bool onPlatform;
 };
 
 

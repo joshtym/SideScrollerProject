@@ -14,7 +14,7 @@ TitleScreen::~TitleScreen()
 
 void TitleScreen::loadContent()
 {
-	bitmap = al_load_bitmap("./imgFiles/title.bmp");
+	bitmap = al_load_bitmap("./assets/imgFiles/title.bmp");
 }
 
 void TitleScreen::unloadContent()

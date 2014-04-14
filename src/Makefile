@@ -1,4 +1,4 @@
-CCFLAGS = -I ../libs/allegro5/include/ -I /usr/include $(INCLUDEDIRS) -std=c++11 -W
+CCFLAGS = -I ../libs/allegro5/include/ -I /usr/include $(INCLUDEDIRS) -std=c++11
 LIBDIR = -L ../libs/allegro5/lib -L /usr/lib
 INCLUDEDIRS = -I ../include/
 OBJDIR = ../obj/

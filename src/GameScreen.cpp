@@ -12,9 +12,7 @@ GameScreen::GameScreen()
 	imageXValue = 0;
 	platformXValue = 0;
 	playerIsDead = false;
-	al_init_font_addon(); // initialize the font addon
-	al_init_ttf_addon();// initialize the ttf (True Type Font) addon
-	font = al_load_ttf_font("./src/font.ttf",62,0 );
+	score = 0;
 }
 
 GameScreen::~GameScreen()
@@ -26,7 +24,8 @@ GameScreen::~GameScreen()
  
 void GameScreen::loadContent()
 {
-	bitmap = al_load_bitmap("./imgFiles/backdropB.bmp");
+	font = al_load_ttf_font("./assets/fonts/font.ttf",62,0 );
+	bitmap = al_load_bitmap("./assets/imgFiles/backdropB.bmp");
 	userPlayer->loadPlayer();
 	userPlatform ->loadPlatform();
 
@@ -57,12 +56,17 @@ void GameScreen::updateContent(ALLEGRO_EVENT ev)
 		else
 			al_draw_bitmap(bitmap, (imageXValue+1600), 0, 0);
 	
-	isCollidingOnPlatformTop = cd.isOnTopPlatform(userPlayer->getCurrentDimensions(), userPlatform->getCurrentDimensions());
-	userPlayer->setIsOnPlatform(isCollidingOnPlatformTop);
 	userPlayer->update(ev, input);
 	userPlatform->update(platformXValue);
 	isCollidingWithObject = cd.checkForCollision(userPlayer->getCurrentDimensions(), userPlatform->getCurrentDimensions());
 	isCollidingWithEdge = cd.checkForPlayerAtEdgeOfScreen(userPlayer->getCurrentDimensions());
+	
+	if (isCollidingWithObject)
+		isCollidingOnPlatformTop = cd.isOnTopPlatform(userPlayer->getCurrentDimensions(), userPlatform->getCurrentDimensions());
+	else
+		isCollidingOnPlatformTop = false;
+		
+	userPlayer->setIsOnPlatform(isCollidingOnPlatformTop);
 	
 	
 	if (isCollidingWithObject && isCollidingWithEdge)
@@ -79,7 +83,7 @@ void GameScreen::draw(ALLEGRO_DISPLAY *display)
 	userPlatform ->draw();
 	oss << "Score: ";
 	oss << score;
-	al_draw_text(font, al_map_rgb(0,0,0), 550, (20),ALLEGRO_ALIGN_LEFT, oss.str().c_str());
+	al_draw_text(font, al_map_rgb(0,0,0), 525, 20,ALLEGRO_ALIGN_LEFT, oss.str().c_str());
 	userPlayer->draw(display);
 	oss.str("");
 	oss.clear();

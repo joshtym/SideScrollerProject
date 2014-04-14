@@ -18,12 +18,12 @@ class Player
 		void draw(ALLEGRO_DISPLAY*);
 		void gravityTick();
 		void jumpTick();
-		void setFloor(double);
 		void setY(double);
 		void setXStatic();
 		int getLastXPosition();
 		ObjectDimensions& getCurrentDimensions();
 		void setIsOnPlatform(bool);
+		void setFloorLevel(double);
 		
 	private:
 		ALLEGRO_BITMAP *playerBitmap;

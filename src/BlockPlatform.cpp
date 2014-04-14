@@ -15,8 +15,8 @@ BlockPlatform::~BlockPlatform()
  
 void BlockPlatform::loadPlatform()
 {
-	platformBitmap = al_load_bitmap("./imgFiles/basicPlatform1.png");
-	platformBitmap2 = al_load_bitmap("./imgFiles/basicPlatformd.png");
+	platformBitmap = al_load_bitmap("./assets/imgFiles/basicPlatform1.png");
+	platformBitmap2 = al_load_bitmap("./assets/imgFiles/basicPlatformd.png");
 	platformDimension.setImgWidth(al_get_bitmap_width(platformBitmap));
 	platformDimension.setImgHeight(al_get_bitmap_height(platformBitmap));
 	

@@ -58,6 +58,7 @@ void Player::movePlayer(ALLEGRO_EVENT e)
 				setY(0-moveSpeed);
 				jumpCounter = 5;
 				jump = true;
+				onPlatform = false;
 			}
 			break;
 		case ALLEGRO_KEY_A:
@@ -69,12 +70,6 @@ void Player::movePlayer(ALLEGRO_EVENT e)
 			//playerAnimation.getIsActive() = false;
 			break;
 	}
-}
-
-
-void Player::setFloor(double fl)
-{	
-	floor = fl;
 }
 
 void Player::setIsOnPlatform(bool b)
@@ -131,7 +126,7 @@ void Player::setY(double speed)
  
 void Player::loadPlayer()
 {
-	playerBitmap = al_load_bitmap("./imgFiles/image.png");
+	playerBitmap = al_load_bitmap("./assets/imgFiles/image.png");
 	playerDimensions.setImgWidth(al_get_bitmap_width(playerBitmap) / 3);
 	playerDimensions.setImgHeight(al_get_bitmap_height(playerBitmap) / 4);
 	playerDimensions.updateValues();
@@ -172,4 +167,9 @@ void Player::draw(ALLEGRO_DISPLAY *display)
 ObjectDimensions& Player::getCurrentDimensions()
 {
 	return playerDimensions;
+}
+
+void Player::setFloorLevel(double userGivenFloorLevel)
+{
+	stageFloor = userGivenFloorLevel;
 }

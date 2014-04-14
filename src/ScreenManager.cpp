@@ -43,7 +43,7 @@ void ScreenManager::loadContent()
 {
 	startOfTransition = false;
 	currentScreen->loadContent();
-	transitionImage = al_load_bitmap("./imgFiles/black-wallpapers.jpg");
+	transitionImage = al_load_bitmap("./assets/imgFiles/black-wallpapers.jpg");
 	double position[] = {0,0};
 	transition.loadContent(transitionImage, position);
 }

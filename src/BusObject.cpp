@@ -15,7 +15,7 @@ BusObject::~BusObject()
  
 void BusObject::loadPlatform()
 {
-	platformBitmap = al_load_bitmap("./imgFiles/basicPlatform.png");
+	platformBitmap = al_load_bitmap("./assets/imgFiles/basicPlatform.png");
 	platformDimension.setImgWidth(al_get_bitmap_width(platformBitmap));
 	platformDimension.setImgHeight(al_get_bitmap_height(platformBitmap));
 	

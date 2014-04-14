@@ -68,8 +68,7 @@ void GameScreen::updateContent(ALLEGRO_EVENT ev)
 void GameScreen::draw(ALLEGRO_DISPLAY *display)
 {
 	al_draw_bitmap(bitmap, imageXValue, 0, 0);
-	userPlatform ->draw();
 	userPlayer->draw(display);
-	
+	userPlatform ->draw();
 	
 }

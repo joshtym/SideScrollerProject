@@ -31,7 +31,7 @@ void GameScreen::loadContent()
 	bitmap = al_load_bitmap("./assets/imgFiles/backdropB.bmp");
 	bitmap1 = al_load_bitmap("./assets/imgFiles/backdropA.bmp");
 	userPlayer->loadPlayer();
-	userPlatform ->loadScrollerObstacle();
+	userPlatform->loadScrollerObstacle();
 
 }
 
@@ -44,7 +44,7 @@ void GameScreen::unloadContent()
 
 void GameScreen::updateContent(ALLEGRO_EVENT ev)
 {
-	
+	userPlayer->setStageSpeed(timeIncrementaleValue);
 	speed = speed + timeIncrementaleValue;
 	
 	if(++time % 5 == 0)

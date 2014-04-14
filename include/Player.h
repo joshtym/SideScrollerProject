@@ -24,6 +24,8 @@ class Player
 		ObjectDimensions& getCurrentDimensions();
 		void setIsOnPlatform(bool);
 		void setFloorLevel(double);
+		double setStageSpeed(double);
+		
 		
 	private:
 		ALLEGRO_BITMAP *playerBitmap;
@@ -40,6 +42,7 @@ class Player
 		int jumpCounter;
 		int lastXPosition;
 		bool onPlatform;
+		double stageSpeed = 0;
 };
 #endif
  

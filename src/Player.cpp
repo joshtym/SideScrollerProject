@@ -6,7 +6,7 @@ Player::Player()
 	playerDimensions.setMinY(388);
 	
 	tick = 0;
-	moveSpeed = 5;
+	moveSpeed = 15;
 	jCount = 0;
 	jump = false;
 	floor = -10;
@@ -23,6 +23,12 @@ Player::~Player()
 void Player::setXStatic()
 {
 	playerDimensions.setMinX(lastXPosition);
+}
+
+
+double Player::setStageSpeed(double x)
+{
+	stageSpeed = x;
 }
 
 
@@ -68,6 +74,7 @@ void Player::movePlayer(ALLEGRO_EVENT e)
 			break;
 		default:
 			//playerAnimation.getIsActive() = false;
+			playerDimensions.setMinX(playerDimensions.getMinX() - stageSpeed);
 			break;
 	}
 }

@@ -3,12 +3,13 @@
 #include "BusObject.h"
 #include "TitleScreen.h"
 #include "SmallBlock.h"
+#include "HalfInvisibleBlock.h"
 
 
 GameScreen::GameScreen()
 {
 	userPlayer = new Player();
-	userPlatform = new SmallBlock();
+	userPlatform = new HalfInvisibleBlock();
 	time = 0;
 	imageXValue = 0;
 	platformXValue = 0;

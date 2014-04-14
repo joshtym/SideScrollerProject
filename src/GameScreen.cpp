@@ -2,12 +2,14 @@
 #include "BlockPlatform.h"
 #include "BusObject.h"
 #include "TitleScreen.h"
+#include "SmallBlock.h"
+#include "HalfInvisibleBlock.h"
 
 
 GameScreen::GameScreen()
 {
 	userPlayer = new Player();
-	userPlatform = new BlockPlatform();
+	userPlatform = new HalfInvisibleBlock();
 	time = 0;
 	imageXValue = 0;
 	platformXValue = 0;
@@ -27,6 +29,7 @@ void GameScreen::loadContent()
 {
 	font = al_load_ttf_font("./assets/fonts/font.ttf",62,0 );
 	bitmap = al_load_bitmap("./assets/imgFiles/backdropB.bmp");
+	bitmap1 = al_load_bitmap("./assets/imgFiles/backdropA.bmp");
 	userPlayer->loadPlayer();
 	userPlatform ->loadScrollerObstacle();
 

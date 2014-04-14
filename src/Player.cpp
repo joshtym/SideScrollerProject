@@ -45,7 +45,6 @@ void Player::movePlayer(ALLEGRO_EVENT e)
 			break;
 		case ALLEGRO_KEY_SPACE:
 			playerAnimation.getIsActive() = true;
-			playerDimensions.setDirection(Direction::DOWN);
 			if(onPlatform)
 			{
 				setY(0-moveSpeed);

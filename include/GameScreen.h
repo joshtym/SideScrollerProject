@@ -3,7 +3,7 @@
 
 #include "GameScreenInterface.h"
 #include "Player.h"
-#include "Platform.h"
+#include "ScrollerObstacle.h"
 #include "CollisionDetection.h"
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_ttf.h>
@@ -25,10 +25,10 @@ class GameScreen : public GameScreenInterface
 		
 	private:
 		Player *userPlayer;
-		Platform *userPlatform;
+		ScrollerObstacle *userPlatform;
 		ALLEGRO_BITMAP *bitmap;
 		CollisionDetection cd;
-		int time;
+		double time;
 		int imageXValue;
 		int platformXValue;
 		bool playerIsDead;
@@ -38,5 +38,6 @@ class GameScreen : public GameScreenInterface
 		ALLEGRO_FONT *font;
 		ostringstream oss;
 		int score;
+		double timeIncrementaleValue;
 };
 #endif

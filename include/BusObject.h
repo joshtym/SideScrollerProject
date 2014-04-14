@@ -1,14 +1,14 @@
 #ifndef BUSOBJECT_H
 #define BUSOBJECT_H
 
-#include "Platform.h"
+#include "ScrollerObstacle.h"
 
-class BusObject : public Platform
+class BusObject : public ScrollerObstacle
 {	
 	public:
 		BusObject();
 		~BusObject();
-		void loadPlatform();
+		void loadScrollerObstacle();
 };
 #endif
  

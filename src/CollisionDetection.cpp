@@ -2,18 +2,10 @@
 
 CollisionDetection::CollisionDetection()
 {
-	onPlatform = false;
 }
 
 CollisionDetection::~CollisionDetection()
 {
-}
-
-bool CollisionDetection::isOnTopPlatform(ObjectDimensions& player, ObjectDimensions& obj)
-{
-	if (player.getMaxY() >= obj.getMinY())
-		return true;
-	return false;
 }
 
 bool CollisionDetection::checkForCollision(ObjectDimensions player, ObjectDimensions obj)
@@ -29,8 +21,7 @@ bool CollisionDetection::checkForPlayerAtEdgeOfScreen(ObjectDimensions player)
 {
 	if (player.getMinX() < 0 || player.getMaxX() > 800 || player.getMinY() < 0 || player.getMaxY() > 600)
 		return true;
-	
-	onPlatform = false;
+		
 	return false;
 }
 
@@ -61,10 +52,7 @@ void CollisionDetection::fixCollisionLeftSide(ObjectDimensions& player, ObjectDi
 		if ((player.getMaxX() - obj.getMinX()) < (obj.getMaxX() - player.getMinX()))
 			if ((player.getMaxX() - obj.getMinX()) < (obj.getMaxY() - player.getMinY()))
 				if ((player.getMaxX() - obj.getMinX()) < (player.getMaxY() - obj.getMinY()))
-				{
-					onPlatform = false;
 					player.setMinX(player.getMinX() - (player.getMaxX() - obj.getMinX()));
-				}
 }
 
 void CollisionDetection::fixCollisionRightSide(ObjectDimensions& player, ObjectDimensions& obj)
@@ -73,10 +61,7 @@ void CollisionDetection::fixCollisionRightSide(ObjectDimensions& player, ObjectD
 		if ((obj.getMaxX() - player.getMinX()) < (player.getMaxX() - obj.getMinX()))
 			if ((obj.getMaxX() - player.getMinX()) < (obj.getMaxY() - player.getMinY()))
 				if ((obj.getMaxX() - player.getMinX()) < (player.getMaxY() - player.getMinY()))
-				{
-					onPlatform = false;
 					player.setMinX(player.getMinX() + (obj.getMaxX() - player.getMinX()));
-				}
 }
 
 void CollisionDetection::fixCollisionTopPlatform(ObjectDimensions& player, ObjectDimensions& obj)
@@ -85,10 +70,7 @@ void CollisionDetection::fixCollisionTopPlatform(ObjectDimensions& player, Objec
 		if ((player.getMaxY() - obj.getMinY()) < (player.getMaxX() - obj.getMinX()))
 			if ((player.getMaxY() - obj.getMinY()) < (obj.getMaxX() - player.getMinX()))
 				if ((player.getMaxY() - obj.getMinY()) < (obj.getMaxY() - player.getMinY()))
-				{
-					onPlatform = true;
 					player.setMinY(player.getMinY() - (player.getMaxY() - obj.getMinY()));
-				}
 }
 
 void CollisionDetection::fixCollisionBottomPlatform(ObjectDimensions& player, ObjectDimensions& obj)
@@ -97,13 +79,12 @@ void CollisionDetection::fixCollisionBottomPlatform(ObjectDimensions& player, Ob
 		if ((obj.getMaxY() - player.getMinY()) < (player.getMaxX() - obj.getMinX()))
 			if ((obj.getMaxY() - player.getMinY()) < (obj.getMaxX() - player.getMinX()))
 				if ((obj.getMaxY() - player.getMinY()) < (player.getMaxY() - obj.getMinY()))
-				{
-					onPlatform = false;
 					player.setMinY(player.getMinY() + (obj.getMaxY() - player.getMinY()));
-				}
 }
 
-bool CollisionDetection::getIsOnPlatform()
+bool CollisionDetection::isOnTopPlatform(ObjectDimensions& player, ObjectDimensions& obj)
 {
-	return onPlatform;
+	if (player.getMaxY() >= obj.getMinY())
+		return true;
+	return false;
 }

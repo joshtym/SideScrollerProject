@@ -1,14 +1,14 @@
 #ifndef BLOCKPLATFORM_H
 #define BLOCKPLATFORM_H
 
-#include "Platform.h"
+#include "ScrollerObstacle.h"
 
-class BlockPlatform : public Platform
+class BlockPlatform : public ScrollerObstacle
 {	
 	public:
 		BlockPlatform();
 		~BlockPlatform();
-		void loadPlatform();
+		void loadScrollerObstacle();
 };
 #endif
  

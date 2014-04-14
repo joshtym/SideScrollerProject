@@ -5,19 +5,19 @@
 BusObject::BusObject()
 {
 	srand(time(0));
-	platformDimension.setMinX(800);
-	platformDimension.setMinY(250 + rand() % 200);
+	scrollerObstacleDimension.setMinX(800);
+	scrollerObstacleDimension.setMinY(250 + rand() % 200);
 }
  
 BusObject::~BusObject()
 {
 }
  
-void BusObject::loadPlatform()
+void BusObject::loadScrollerObstacle()
 {
-	platformBitmap = al_load_bitmap("./assets/imgFiles/basicPlatform.png");
-	platformDimension.setImgWidth(al_get_bitmap_width(platformBitmap));
-	platformDimension.setImgHeight(al_get_bitmap_height(platformBitmap));
+	scrollerObstacleBitmap = al_load_bitmap("./assets/imgFiles/basicPlatform.png");
+	scrollerObstacleDimension.setImgWidth(al_get_bitmap_width(scrollerObstacleBitmap));
+	scrollerObstacleDimension.setImgHeight(al_get_bitmap_height(scrollerObstacleBitmap));
 	
-	platformDimension.updateValues();
+	scrollerObstacleDimension.updateValues();
 }

@@ -13,6 +13,7 @@ GameScreen::GameScreen()
 	platformXValue = 0;
 	playerIsDead = false;
 	score = 0;
+	timeIncrementaleValue = 1;
 }
 
 GameScreen::~GameScreen()
@@ -27,23 +28,23 @@ void GameScreen::loadContent()
 	font = al_load_ttf_font("./assets/fonts/font.ttf",62,0 );
 	bitmap = al_load_bitmap("./assets/imgFiles/backdropB.bmp");
 	userPlayer->loadPlayer();
-	userPlatform ->loadPlatform();
+	userPlatform ->loadScrollerObstacle();
 
 }
 
 void GameScreen::unloadContent()
 {
 	userPlayer->unloadPlayer();
-	userPlatform ->unloadPlatform();
+	userPlatform ->unloadScrollerObstacle();
 	al_destroy_bitmap(bitmap);
 }
 
 void GameScreen::updateContent(ALLEGRO_EVENT ev)
 {
-	time++;
-	if(time % 5 == 0)
+	time = time + timeIncrementaleValue;
+	//if(time % 5 == 0)
 		score++;
-	
+		
 	imageXValue = time*-2;
 	platformXValue = (800 - time*2);
 	
@@ -51,6 +52,7 @@ void GameScreen::updateContent(ALLEGRO_EVENT ev)
 		if(imageXValue < -1600)
 		{
 			imageXValue = 0;
+			timeIncrementaleValue = timeIncrementaleValue + 0.5;
 			time = 0;
 		}
 		else

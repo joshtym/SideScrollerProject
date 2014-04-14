@@ -18,13 +18,33 @@ bool CollisionDetection::checkForCollision(ObjectDimensions player, ObjectDimens
 	return false;
 }
 
-void CollisionDetection::CollisionDetection::fixCollision(ObjectDimensions& player, ObjectDimensions& obj)
+bool CollisionDetection::checkForPlayerAtEdgeOfScreen(ObjectDimensions player)
+{
+	if (player.getMinX() < 0 || player.getMaxX() > 800 || player.getMinY() < 0 || player.getMaxY() > 600)
+		return true;
+	
+	return false;
+}
+
+void CollisionDetection::fixCollision(ObjectDimensions& player, ObjectDimensions& obj)
 {
 	fixCollisionLeftSide(player, obj);
 	fixCollisionRightSide(player, obj);
 	fixCollisionTopPlatform(player, obj);
 	fixCollisionBottomPlatform(player, obj);
 					
+}
+
+void CollisionDetection::fixCollisionAtEdgeOfScreen(ObjectDimensions& player)
+{
+	if (player.getMinX() < 0)
+		player.setMinX(0 - player.getMinX());
+	else if (player.getMaxX() > 800)
+		player.setMinX(player.getMinX() - (player.getMaxX() - 800));
+	else if (player.getMinY() < 0)
+		player.setMinY(0 - player.getMinY());
+	else if (player.getMaxY() > 600)
+		player.setMinY(player.getMinY() - (600 - (player.getMaxY() - 600)));
 }
 
 void CollisionDetection::fixCollisionLeftSide(ObjectDimensions& player, ObjectDimensions& obj)

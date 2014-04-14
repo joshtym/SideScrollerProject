@@ -10,7 +10,9 @@ class CollisionDetection
 		~CollisionDetection();
 		
 		bool checkForCollision(ObjectDimensions, ObjectDimensions);
+		bool checkForPlayerAtEdgeOfScreen(ObjectDimensions);
 		void fixCollision(ObjectDimensions&, ObjectDimensions&);
+		void fixCollisionAtEdgeOfScreen(ObjectDimensions&);
 		
 	private:
 		void fixCollisionLeftSide(ObjectDimensions&, ObjectDimensions&);

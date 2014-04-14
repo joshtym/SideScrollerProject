@@ -25,5 +25,8 @@ class GameScreen : public GameScreenInterface
 		int time;
 		int imageXValue;
 		int platformXValue;
+		bool playerIsDead;
+		bool isCollidingWithObject;
+		bool isCollidingWithEdge;
 };
 #endif

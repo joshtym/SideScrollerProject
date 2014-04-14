@@ -1,6 +1,7 @@
 #include "GameScreen.h"
 #include "BlockPlatform.h"
 #include "BusObject.h"
+#include "TitleScreen.h"
 #include <iostream>
 
 GameScreen::GameScreen()
@@ -10,6 +11,7 @@ GameScreen::GameScreen()
 	time = 0;
 	imageXValue = 0;
 	platformXValue = 0;
+	playerIsDead = false;
 }
 
 GameScreen::~GameScreen()
@@ -51,8 +53,15 @@ void GameScreen::updateContent(ALLEGRO_EVENT ev)
 	userPlayer->update(ev, input);
 	userPlatform->update(platformXValue);
 	
-	if (cd.checkForCollision(userPlayer->getCurrentDimensions(), userPlatform->getCurrentDimensions()))
+	isCollidingWithObject = cd.checkForCollision(userPlayer->getCurrentDimensions(), userPlatform->getCurrentDimensions());
+	isCollidingWithEdge = cd.checkForPlayerAtEdgeOfScreen(userPlayer->getCurrentDimensions());
+	
+	if (isCollidingWithObject && isCollidingWithEdge)
+		ScreenManager::GetInstance().addScreen(new TitleScreen());
+	else if (isCollidingWithObject)
 		cd.fixCollision(userPlayer->getCurrentDimensions(), userPlatform->getCurrentDimensions());
+	else if (isCollidingWithEdge)
+		cd.fixCollisionAtEdgeOfScreen(userPlayer->getCurrentDimensions());
 }
 
 void GameScreen::draw(ALLEGRO_DISPLAY *display)

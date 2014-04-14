@@ -28,7 +28,7 @@ class GameScreen : public GameScreenInterface
 		ScrollerObstacle *userPlatform;
 		ALLEGRO_BITMAP *bitmap;
 		CollisionDetection cd;
-		double time;
+		int time;
 		int imageXValue;
 		int platformXValue;
 		bool playerIsDead;
@@ -39,5 +39,7 @@ class GameScreen : public GameScreenInterface
 		ostringstream oss;
 		int score;
 		double timeIncrementaleValue;
+		double maxSpeed;
+		double speed = 0;
 };
 #endif

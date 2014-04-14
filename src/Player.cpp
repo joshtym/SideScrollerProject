@@ -13,6 +13,7 @@ Player::Player()
 	stageFloor = 388;
 	jumpCounter = 0;
 	lastXPosition = 0;
+	
 }
  
 Player::~Player()

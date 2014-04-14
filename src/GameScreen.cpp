@@ -41,22 +41,30 @@ void GameScreen::unloadContent()
 
 void GameScreen::updateContent(ALLEGRO_EVENT ev)
 {
-	time = time + timeIncrementaleValue;
-	//if(time % 5 == 0)
+	
+	speed = speed + timeIncrementaleValue;
+	
+	if(++time % 5 == 0)
 		score++;
 		
-	imageXValue = time*-2;
-	platformXValue = (800 - time*2);
+	imageXValue = speed*-2;
+	platformXValue = (800 - speed*2);
 	
 	if (imageXValue < -800)
+	{
 		if(imageXValue < -1600)
 		{
 			imageXValue = 0;
-			timeIncrementaleValue = timeIncrementaleValue + 0.5;
-			time = 0;
+			if(timeIncrementaleValue < 7)
+			{
+				timeIncrementaleValue = timeIncrementaleValue + 0.5;
+			}
+			speed = 0;
 		}
 		else
 			al_draw_bitmap(bitmap, (imageXValue+1600), 0, 0);
+	}
+	
 	
 	userPlayer->update(ev, input);
 	userPlatform->update(platformXValue);
@@ -72,7 +80,10 @@ void GameScreen::updateContent(ALLEGRO_EVENT ev)
 	
 	
 	if (isCollidingWithObject && isCollidingWithEdge)
-		ScreenManager::GetInstance().addScreen(new TitleScreen());
+	{
+		//if(!(isCollidingOnPlatformTop))
+			ScreenManager::GetInstance().addScreen(new TitleScreen());
+	}
 	else if (isCollidingWithObject)
 		cd.fixCollision(userPlayer->getCurrentDimensions(), userPlatform->getCurrentDimensions());
 	else if (isCollidingWithEdge)

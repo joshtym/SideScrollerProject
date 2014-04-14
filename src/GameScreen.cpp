@@ -9,7 +9,7 @@
 GameScreen::GameScreen()
 {
 	userPlayer = new Player();
-	userPlatform = new HalfInvisibleBlock();
+	userPlatform = new SmallBlock();
 	time = 0;
 	imageXValue = 0;
 	platformXValue = 0;
@@ -28,8 +28,10 @@ GameScreen::~GameScreen()
 void GameScreen::loadContent()
 {
 	font = al_load_ttf_font("./assets/fonts/font.ttf",62,0 );
+	if((rand() % 2 + 1)>1)
 	bitmap = al_load_bitmap("./assets/imgFiles/backdropB.bmp");
-	bitmap1 = al_load_bitmap("./assets/imgFiles/backdropA.bmp");
+	else
+	bitmap = al_load_bitmap("./assets/imgFiles/backdropBa.bmp");
 	userPlayer->loadPlayer();
 	userPlatform->loadScrollerObstacle();
 

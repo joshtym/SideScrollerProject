@@ -27,6 +27,7 @@ class GameScreen : public GameScreenInterface
 		Player *userPlayer;
 		ScrollerObstacle *userPlatform;
 		ALLEGRO_BITMAP *bitmap;
+		ALLEGRO_BITMAP *bitmap1;
 		CollisionDetection cd;
 		double time;
 		int imageXValue;

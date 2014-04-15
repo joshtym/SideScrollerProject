@@ -10,11 +10,10 @@
 GameScreen::GameScreen()
 {
 	userPlayer = new Player();
-	userPlatform = new Spike();
 	time = 0;
 	imageXValue = 0;
 	platformXValue = 0;
-	playerIsDead = false;
+	isPlayerDead = false;
 	score = 0;
 	timeIncrementaleValue = 1;
 	isNight = false;
@@ -23,7 +22,6 @@ GameScreen::GameScreen()
 GameScreen::~GameScreen()
 {
 	delete userPlayer;
-	delete userPlatform;
 	delete font;
 }
  
@@ -39,15 +37,16 @@ void GameScreen::loadContent()
 		bitmap = al_load_bitmap("./assets/imgFiles/backdropBa.bmp");
 		isNight = true;
 	}
+	
 	userPlayer->loadPlayer();
-	userPlatform->loadScrollerObstacle();
+	obstacles.loadObstacles();
 
 }
 
 void GameScreen::unloadContent()
 {
 	userPlayer->unloadPlayer();
-	userPlatform ->unloadScrollerObstacle();
+	obstacles.unloadObstacles();
 	al_destroy_bitmap(bitmap);
 }
 
@@ -79,37 +78,22 @@ void GameScreen::updateContent(ALLEGRO_EVENT ev)
 	
 	
 	userPlayer->update(ev, input);
-	userPlatform->update(platformXValue);
-	isCollidingWithObject = cd.checkForCollision(userPlayer->getCurrentDimensions(), userPlatform->getCurrentDimensions());
-	isCollidingWithEdge = cd.checkForPlayerAtEdgeOfScreen(userPlayer->getCurrentDimensions());
+	obstacles.testForCollision(userPlayer, isPlayerDead);
 	
-	if (isCollidingWithObject)
-		isCollidingOnPlatformTop = cd.isOnTopPlatform(userPlayer->getCurrentDimensions(), userPlatform->getCurrentDimensions());
-	else
-		isCollidingOnPlatformTop = false;
-		
-	userPlayer->setIsOnPlatform(isCollidingOnPlatformTop);
-	
-	
-	if (isCollidingWithObject && isCollidingWithEdge)
-	{
-		//if(!(isCollidingOnPlatformTop))
-			ScreenManager::GetInstance().addScreen(new TitleScreen());
-	}
-	else if (isCollidingWithObject)
-		cd.fixCollision(userPlayer->getCurrentDimensions(), userPlatform->getCurrentDimensions());
-	else if (isCollidingWithEdge)
-		cd.fixCollisionAtEdgeOfScreen(userPlayer->getCurrentDimensions());
+	if (isPlayerDead)
+		ScreenManager::GetInstance().addScreen(new TitleScreen());
 }
 
 void GameScreen::draw(ALLEGRO_DISPLAY *display)
 {
 	al_draw_bitmap(bitmap, imageXValue, 0, 0);
-	userPlatform ->draw();
+	obstacles.drawObstacles(timeIncrementaleValue);
 	oss << "Score: ";
 	oss << score;
-	if(isNight) al_draw_text(font, al_map_rgb(255,255,255), 525, 20,ALLEGRO_ALIGN_LEFT, oss.str().c_str());
-	else al_draw_text(font, al_map_rgb(0,0,0), 525, 20,ALLEGRO_ALIGN_LEFT, oss.str().c_str());
+	if(isNight) 
+		al_draw_text(font, al_map_rgb(255,255,255), 525, 20,ALLEGRO_ALIGN_LEFT, oss.str().c_str());
+	else 
+		al_draw_text(font, al_map_rgb(0,0,0), 525, 20,ALLEGRO_ALIGN_LEFT, oss.str().c_str());
 	userPlayer->draw(display);
 	oss.str("");
 	oss.clear();

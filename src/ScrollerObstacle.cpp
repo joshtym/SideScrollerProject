@@ -14,10 +14,22 @@ void ScrollerObstacle::update(double ScrollerObstacleXValue)
 	scrollerObstacleDimension.updateValues();
 }
 
-void ScrollerObstacle::draw()
+void ScrollerObstacle::draw(double obstacleIncrementalValue)
 {
-	al_draw_bitmap(scrollerObstacleBitmap, scrollerObstacleDimension.getMinX(), 
-				   scrollerObstacleDimension.getMinY(), 0);
+	isBeingDrawn = true;
+	
+	scrollerObstacleDimension.setMinX(scrollerObstacleDimension.getMinX() - obstacleIncrementalValue);
+	
+	if (scrollerObstacleDimension.getMaxX() < 0)
+	{
+		isBeingDrawn = false;
+		scrollerObstacleDimension.setMinX(800);
+	}
+	else
+		al_draw_bitmap(scrollerObstacleBitmap, scrollerObstacleDimension.getMinX(), 
+						scrollerObstacleDimension.getMinY(), 0);
+						
+	scrollerObstacleDimension.updateValues();
 }
 
 ObjectDimensions& ScrollerObstacle::getCurrentDimensions()
@@ -28,4 +40,9 @@ ObjectDimensions& ScrollerObstacle::getCurrentDimensions()
 bool ScrollerObstacle::getIsDeadly()
 {
 	return isDeadly;
+}
+
+bool ScrollerObstacle::getIsBeingDrawn()
+{
+	return isBeingDrawn;
 }

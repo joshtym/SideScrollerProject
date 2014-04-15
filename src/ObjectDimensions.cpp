@@ -1,4 +1,5 @@
 #include "ObjectDimensions.h"
+#include <iostream>
 
 ObjectDimensions::ObjectDimensions()
 {
@@ -80,7 +81,7 @@ void ObjectDimensions::setDirection(Direction userGivenDirection)
 
 void ObjectDimensions::updateValues()
 {
-	
 	xMax = xMin + imgWidth;
 	yMax = yMin + imgHeight;
+	//std::cout << xMax << std::endl;
 }

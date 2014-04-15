@@ -1,12 +1,9 @@
-#include <iostream>
-#include <stdio.h>
 #include "HalfInvisibleBlock.h"
  
 HalfInvisibleBlock::HalfInvisibleBlock()
 {
-	srand(time(0));
 	scrollerObstacleDimension.setMinX(800);
-	scrollerObstacleDimension.setMinY(250 + rand() % 200);
+	scrollerObstacleDimension.setMinY(200 + rand() %  188);
 }
  
 HalfInvisibleBlock::~HalfInvisibleBlock()

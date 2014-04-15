@@ -3,9 +3,10 @@
 ScrollerHole::ScrollerHole()
 {
 	isTransparent = true;
-	srand(time(0));
 	scrollerObstacleDimension.setMinX(800);
 	scrollerObstacleDimension.setMinY(388);
+	isDeadly = false;
+	isBeingDrawn = false;
 }
 
 ScrollerHole::~ScrollerHole()

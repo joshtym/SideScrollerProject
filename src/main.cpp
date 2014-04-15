@@ -1,10 +1,14 @@
+#include <vector>
+#include <ctime>
+#include <cstdlib>
 #include "ScreenManager.h"
 #include "InputManagement.h"
 #include "Display.h"
-#include <vector>
 
 int main()
 {
+	srand(time(0));
+		
 	const double FPS = 60;
 	
 	int screenWidth, screenHeight;

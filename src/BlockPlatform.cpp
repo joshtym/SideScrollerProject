@@ -1,12 +1,11 @@
-#include <iostream>
-#include <stdio.h>
 #include "BlockPlatform.h"
  
 BlockPlatform::BlockPlatform()
 {
-	srand(time(0));
 	scrollerObstacleDimension.setMinX(800);
-	scrollerObstacleDimension.setMinY(250 + rand() % 200);
+	scrollerObstacleDimension.setMinY(200 + rand() % 188);
+	isDeadly = false;
+	isBeingDrawn = false;
 }
  
 BlockPlatform::~BlockPlatform()

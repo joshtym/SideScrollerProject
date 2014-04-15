@@ -1,14 +1,13 @@
 #ifndef GAMESCREEN_H
 #define GAMESCREE_H
 
-#include "GameScreenInterface.h"
-#include "Player.h"
-#include "ScrollerObstacle.h"
-#include "CollisionDetection.h"
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_ttf.h>
 #include <iostream>
 #include <sstream>
+#include "GameScreenInterface.h"
+#include "Player.h"
+#include "ObstacleDrawer.h"
 
 using namespace std;
 
@@ -25,17 +24,13 @@ class GameScreen : public GameScreenInterface
 		
 	private:
 		Player *userPlayer;
-		ScrollerObstacle *userPlatform;
+		ObstacleDrawer obstacles;
 		ALLEGRO_BITMAP *bitmap;
 		ALLEGRO_BITMAP *bitmap1;
-		CollisionDetection cd;
 		int time;
 		int imageXValue;
 		int platformXValue;
-		bool playerIsDead;
-		bool isCollidingWithObject;
-		bool isCollidingWithEdge;
-		bool isCollidingOnPlatformTop;
+		bool isPlayerDead;
 		ALLEGRO_FONT *font;
 		ostringstream oss;
 		int score;

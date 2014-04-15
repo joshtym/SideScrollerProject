@@ -1,4 +1,5 @@
 #include "CollisionDetection.h"
+#include <iostream>
 
 CollisionDetection::CollisionDetection()
 {
@@ -84,7 +85,7 @@ void CollisionDetection::fixCollisionBottomPlatform(ObjectDimensions& player, Ob
 
 bool CollisionDetection::isOnTopPlatform(ObjectDimensions& player, ObjectDimensions& obj)
 {
-	if (player.getMaxY() >= obj.getMinY())
+	if (player.getMaxY() == obj.getMinY() +10)
 		return true;
 	return false;
 }

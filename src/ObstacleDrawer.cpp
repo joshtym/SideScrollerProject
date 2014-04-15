@@ -53,14 +53,19 @@ void ObstacleDrawer::testForCollisionHelperFunction(Player* player, ScrollerObst
 	isCollidingWithEdge = cd.checkForPlayerAtEdgeOfScreen(player->getCurrentDimensions());
 	
 	if (isCollidingWithObject)
+	{
+		
 		if (obstacle->getIsDeadly())
 			isPlayerDead = true;
-		else
-			isCollidingOnPlatformTop = cd.isOnTopPlatform(player->getCurrentDimensions(), obstacle->getCurrentDimensions());
+		else if(cd.isOnTopPlatform(player->getCurrentDimensions(), obstacle->getCurrentDimensions()))
+		{
+			player->setIsOnPlatform(true);
+		}
+	}
 	else
 		isCollidingOnPlatformTop = false;
 		
-	player->setIsOnPlatform(isCollidingOnPlatformTop);
+	
 	
 	if (isCollidingWithObject && isCollidingWithEdge)
 		isPlayerDead = true;
@@ -68,6 +73,9 @@ void ObstacleDrawer::testForCollisionHelperFunction(Player* player, ScrollerObst
 		cd.fixCollision(player->getCurrentDimensions(), obstacle->getCurrentDimensions());
 	else if (isCollidingWithEdge)
 		cd.fixCollisionAtEdgeOfScreen(player->getCurrentDimensions());
+		
+		
+	
 }
 
 void ObstacleDrawer::drawObstacles(double obstacleIncrementalValue)

@@ -55,12 +55,12 @@ void Player::movePlayer(ALLEGRO_EVENT e)
 			break;
 		case ALLEGRO_KEY_SPACE:
 			playerAnimation.getIsActive() = true;
+			std::cout << "space " << onPlatform << std::endl;
 			if(onPlatform)
 			{
 				setY(0-moveSpeed);
 				jumpCounter = 5;
 				jump = true;
-				onPlatform = false;
 			}
 			else if(playerDimensions.getMinY() == stageFloor)
 			{
@@ -136,15 +136,16 @@ void Player::jumpTick()
 
 void Player::setY(double speed)
 {
-
-	if(floor > 0 && onPlatform)
+	std::cout << "set " << onPlatform << std::endl;
+	if(onPlatform && jump)
 	{
-		if(playerDimensions.getMinY() <= floor && speed < 0)
+		if(speed < 0)
 			playerDimensions.setMinY(playerDimensions.getMinY() + speed);
 		else if(speed > 0 && playerDimensions.getMinY() < floor)
 			playerDimensions.setMinY(playerDimensions.getMinY() + speed);
 		else if (playerDimensions.getMinY() > floor)
 			playerDimensions.setMinY(floor);
+		onPlatform = false;
 	}
 	else
 	{

@@ -2,10 +2,14 @@
 #include "TitleScreen.h"
 #include "GameScreen.h"
 
+
+
+
 InputManagement deathInput;
 
-DeathScreen::DeathScreen()
+DeathScreen::DeathScreen(int score)
 {
+	Finalscore = score;
 }
 
 DeathScreen::~DeathScreen()
@@ -14,12 +18,14 @@ DeathScreen::~DeathScreen()
 
 void DeathScreen::loadContent()
 {
+	font = al_load_ttf_font("./assets/fonts/font.ttf",62,0 );
 	bitmap = al_load_bitmap("./assets/imgFiles/deathScreen.bmp");
 }
 
 void DeathScreen::unloadContent()
 {
 	al_destroy_bitmap(bitmap);
+	delete font;
 }
 
 void DeathScreen::updateContent(ALLEGRO_EVENT ev)
@@ -31,4 +37,10 @@ void DeathScreen::updateContent(ALLEGRO_EVENT ev)
 void DeathScreen::draw(ALLEGRO_DISPLAY *display)
 {
 	al_draw_bitmap(bitmap, 0, 0, 0);
+	oss << "Total Score: ";
+	oss << Finalscore;
+	
+	al_draw_text(font, al_map_rgb(255,255,255), 220, 500,ALLEGRO_ALIGN_LEFT, oss.str().c_str());
+	oss.str("");
+	oss.clear();
 }

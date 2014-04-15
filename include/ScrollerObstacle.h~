@@ -18,7 +18,7 @@ class ScrollerObstacle
 		ALLEGRO_BITMAP *scrollerObstacleBitmap;
 		ObjectDimensions scrollerObstacleDimension;
 		bool isTransparent;
-		bool isDeadly=false;
+		bool isDeadly;
 };
 #endif
  

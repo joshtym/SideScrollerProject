@@ -4,12 +4,13 @@
 #include "TitleScreen.h"
 #include "SmallBlock.h"
 #include "HalfInvisibleBlock.h"
+#include "Spike.h"
 
 
 GameScreen::GameScreen()
 {
 	userPlayer = new Player();
-	userPlatform = new SmallBlock();
+	userPlatform = new Spike();
 	time = 0;
 	imageXValue = 0;
 	platformXValue = 0;

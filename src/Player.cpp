@@ -3,7 +3,7 @@
 
 Player::Player()
 {
-	playerDimensions.setMinX(10);
+	playerDimensions.setMinX(-100);
 	playerDimensions.setMinY(388);
 	
 	tick = 0;
@@ -16,6 +16,7 @@ Player::Player()
 	lastXPosition = 0;
 	momentium = 0;
 	otherTick = false;
+
 }
  
 Player::~Player()
@@ -86,6 +87,9 @@ void Player::addMomentium(int m)
 	if(momentium < 45 && momentium > -45)
 		momentium += m;
 }
+
+
+
 
 void Player::applyMomentium()
 {
@@ -179,7 +183,6 @@ void Player::update(ALLEGRO_EVENT ev, InputManagement input)
 	if(otherTick) otherTick = false;
 	else otherTick = true;
 	
-	std::cout <<otherTick <<"\n";
 	input.update();
 	applyMomentium();
 	movePlayer(ev);

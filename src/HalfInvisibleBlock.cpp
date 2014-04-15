@@ -12,7 +12,7 @@ HalfInvisibleBlock::~HalfInvisibleBlock()
  
 void HalfInvisibleBlock::loadScrollerObstacle()
 {
-	scrollerObstacleBitmap = al_load_bitmap("./assets/imgFiles/HalfInvisPlatform.png");
+	scrollerObstacleBitmap = al_load_bitmap("./assets/imgFiles/computer1.png");
 	scrollerObstacleDimension.setImgWidth(al_get_bitmap_width(scrollerObstacleBitmap));
 	scrollerObstacleDimension.setImgHeight(al_get_bitmap_height(scrollerObstacleBitmap));
 	

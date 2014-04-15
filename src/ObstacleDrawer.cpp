@@ -90,7 +90,6 @@ void ObstacleDrawer::drawObstacles(double obstacleIncrementalValue)
 		}
 	}
 	
-	std::cout << maxX << std::endl;
 	if (maxX < 800)
 		allowNewDrawing = true;
 	else

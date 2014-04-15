@@ -3,7 +3,7 @@
 SpriteSheet::SpriteSheet()
 {
 	frameCounter = 0;
-	switchFrame = 1;
+	switchFrame = 10;
 }
 
 SpriteSheet::~SpriteSheet()

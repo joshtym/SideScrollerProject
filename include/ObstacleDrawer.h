@@ -2,14 +2,18 @@
 #define OBSTACLEDRAWER_H
 
 #include <vector>
+#include <allegro5/allegro.h>
+#include "ScrollerObstacle.h"
 
 class ObstacleDrawer
 {
 	public:
 		ObstacleDrawer();
 		~ObstacleDrawer();
+		void loadObstacles();
+		void unloadObstacles();
 		
 	private:
-		vector<ALLEGRO_BITMAP*> obstacles;
+		std::vector<ScrollerObstacle*> obstacleInfo;
 };
 #endif

@@ -2,11 +2,14 @@
 #define DEATHSCREEN_H
 
 #include "ScreenManager.h"
+#include <iostream>
+#include <sstream>
+using namespace std;
 
 class DeathScreen : public GameScreenInterface
 {
 	public:
-		DeathScreen();
+		DeathScreen(int);
 		~DeathScreen();
 		
 		void loadContent();
@@ -17,5 +20,7 @@ class DeathScreen : public GameScreenInterface
 	private:
 		ALLEGRO_FONT *font;
 		ALLEGRO_BITMAP *bitmap;
+		ostringstream oss;
+		int Finalscore;
 };
 #endif

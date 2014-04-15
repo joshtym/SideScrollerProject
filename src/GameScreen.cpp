@@ -82,7 +82,7 @@ void GameScreen::updateContent(ALLEGRO_EVENT ev)
 	obstacles.testForCollision(userPlayer, isPlayerDead);
 	
 	if (isPlayerDead)
-		ScreenManager::GetInstance().addScreen(new DeathScreen());
+		ScreenManager::GetInstance().addScreen(new DeathScreen(score));
 }
 
 void GameScreen::draw(ALLEGRO_DISPLAY *display)

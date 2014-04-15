@@ -15,6 +15,7 @@ Player::Player()
 	jumpCounter = 0;
 	lastXPosition = 0;
 	momentium = 0;
+	otherTick = false;
 }
  
 Player::~Player()
@@ -75,15 +76,13 @@ void Player::movePlayer(ALLEGRO_EVENT e)
 			break;
 		default:
 			//playerAnimation.getIsActive() = false;
-			//playerDimensions.setMinX(playerDimensions.getMinX() - 15);
-			addMomentium(-1);
+			if(otherTick) addMomentium(-1);
 			break;
 	}
 }
 
 void Player::addMomentium(int m)
 {
-	std::cout << "momentium: " << momentium << "<\n";
 	if(momentium < 45 && momentium > -45)
 		momentium += m;
 }
@@ -92,13 +91,11 @@ void Player::applyMomentium()
 {
 	if(momentium > 0)
 	{
-		std::cout << "momentium: " << momentium-- << "\n";
 		playerDimensions.setMinX(playerDimensions.getMinX() + 4);
 		momentium--;
 	}
 	else if(momentium < 0)
 	{
-		std::cout << "momentium: " << momentium++ << "\n";
 		playerDimensions.setMinX(playerDimensions.getMinX() - 4);
 		momentium++;
 	}
@@ -179,6 +176,10 @@ void Player::unloadPlayer()
 
 void Player::update(ALLEGRO_EVENT ev, InputManagement input)
 {
+	if(otherTick) otherTick = false;
+	else otherTick = true;
+	
+	std::cout <<otherTick <<"\n";
 	input.update();
 	applyMomentium();
 	movePlayer(ev);

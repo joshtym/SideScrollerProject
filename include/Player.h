@@ -34,7 +34,7 @@ class Player
 		Animation playerAnimation;
 		SpriteSheet ssAnimation;
 		ObjectDimensions playerDimensions;
-		
+		int otherTick;
 		int tick;
 		int moveSpeed;
 		int jCount;

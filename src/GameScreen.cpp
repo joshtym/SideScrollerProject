@@ -5,6 +5,7 @@
 #include "SmallBlock.h"
 #include "HalfInvisibleBlock.h"
 #include "Spike.h"
+#include "DeathScreen.h"
 
 
 GameScreen::GameScreen()
@@ -81,7 +82,7 @@ void GameScreen::updateContent(ALLEGRO_EVENT ev)
 	obstacles.testForCollision(userPlayer, isPlayerDead);
 	
 	if (isPlayerDead)
-		ScreenManager::GetInstance().addScreen(new TitleScreen());
+		ScreenManager::GetInstance().addScreen(new DeathScreen());
 }
 
 void GameScreen::draw(ALLEGRO_DISPLAY *display)

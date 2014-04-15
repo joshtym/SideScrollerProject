@@ -1,13 +1,13 @@
-#ifndef SPLASHSCREEN_H
-#define SPLASHSCREEN_H
+#ifndef DEATHSCREEN_H
+#define DEATHSCREEN_H
 
 #include "ScreenManager.h"
 
-class SplashScreen : public GameScreenInterface
+class DeathScreen : public GameScreenInterface
 {
 	public:
-		SplashScreen();
-		~SplashScreen();
+		DeathScreen();
+		~DeathScreen();
 		
 		void loadContent();
 		void unloadContent();

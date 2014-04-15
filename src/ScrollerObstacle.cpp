@@ -24,3 +24,8 @@ ObjectDimensions& ScrollerObstacle::getCurrentDimensions()
 {
 	return scrollerObstacleDimension;
 }
+
+bool ScrollerObstacle::getIsDeadly()
+{
+	return isDeadly;
+}

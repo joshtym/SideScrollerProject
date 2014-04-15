@@ -4,7 +4,7 @@
 #include "ScrollerObstacle.h"
 
 class BlockPlatform : public ScrollerObstacle
-{	
+{
 	public:
 		BlockPlatform();
 		~BlockPlatform();

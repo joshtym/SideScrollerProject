@@ -13,6 +13,7 @@ class ScrollerObstacle
 		virtual void update(double);
 		virtual void draw();
 		virtual ObjectDimensions& getCurrentDimensions();
+		bool getIsDeadly();
 		
 	protected:
 		ALLEGRO_BITMAP *scrollerObstacleBitmap;

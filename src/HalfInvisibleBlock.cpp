@@ -4,6 +4,8 @@ HalfInvisibleBlock::HalfInvisibleBlock()
 {
 	scrollerObstacleDimension.setMinX(800);
 	scrollerObstacleDimension.setMinY(200 + rand() %  188);
+	isDeadly = false;
+	isBeingDrawn = false;
 }
  
 HalfInvisibleBlock::~HalfInvisibleBlock()

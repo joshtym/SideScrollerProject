@@ -75,6 +75,7 @@ void ObstacleDrawer::drawObstacles(double obstacleIncrementalValue)
 	int randomValue = rand() % 100;
 	int randomValue2;
 	maxX = 0;
+	int testVal = 0;
 	
 	for (int i = 0; i < obstacleInfo.size(); i++)
 	{
@@ -82,11 +83,12 @@ void ObstacleDrawer::drawObstacles(double obstacleIncrementalValue)
 		{
 			obstacleInfo[i]->draw(obstacleIncrementalValue);
 			obstacleInfo[i]->getCurrentDimensions().updateValues();
-			std::cout << obstacleInfo[i]->getCurrentDimensions().getMaxX() << std::endl;
 			tempMaxX = obstacleInfo[i]->getCurrentDimensions().getMaxX();
 			
 			if (tempMaxX > maxX)
 				maxX = tempMaxX;
+				
+			testVal++;
 		}
 	}
 	
@@ -100,7 +102,7 @@ void ObstacleDrawer::drawObstacles(double obstacleIncrementalValue)
 	while (obstacleInfo[randomValue2]->getIsBeingDrawn())
 		randomValue2 = rand() % obstacleInfo.size();
 	
-	if (allowNewDrawing && randomValue == 0)
+	if (allowNewDrawing && randomValue == 0 && testVal < 4)
 	{
 		allowNewDrawing = false;
 		obstacleInfo[randomValue2]->draw(obstacleIncrementalValue);

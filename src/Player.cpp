@@ -55,7 +55,6 @@ void Player::movePlayer(ALLEGRO_EVENT e)
 			break;
 		case ALLEGRO_KEY_SPACE:
 			playerAnimation.getIsActive() = true;
-			std::cout << "space " << onPlatform << std::endl;
 			if(onPlatform)
 			{
 				setY(0-moveSpeed);
@@ -84,7 +83,7 @@ void Player::movePlayer(ALLEGRO_EVENT e)
 
 void Player::addMomentium(int m)
 {
-	if(momentium < 45 && momentium > -45)
+	if(momentium < 60 && momentium > -60)
 		momentium += m;
 }
 
@@ -95,12 +94,12 @@ void Player::applyMomentium()
 {
 	if(momentium > 0)
 	{
-		playerDimensions.setMinX(playerDimensions.getMinX() + 4);
+		playerDimensions.setMinX(playerDimensions.getMinX() + 5);
 		momentium--;
 	}
 	else if(momentium < 0)
 	{
-		playerDimensions.setMinX(playerDimensions.getMinX() - 4);
+		playerDimensions.setMinX(playerDimensions.getMinX() - 5);
 		momentium++;
 	}
 }
@@ -136,7 +135,6 @@ void Player::jumpTick()
 
 void Player::setY(double speed)
 {
-	std::cout << "set " << onPlatform << std::endl;
 	if(onPlatform && jump)
 	{
 		if(speed < 0)

@@ -14,6 +14,7 @@ class ScrollerObstacle
 		virtual void update(double);
 		virtual void draw(double);
 		virtual ObjectDimensions& getCurrentDimensions();
+		void resetXAndYValues();
 		bool getIsDeadly();
 		bool getIsBeingDrawn();
 		

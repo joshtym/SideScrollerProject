@@ -5,7 +5,7 @@
 SmallBlock::SmallBlock()
 {
 	scrollerObstacleDimension.setMinX(800);
-	scrollerObstacleDimension.setMinY(200 + rand() % 188);
+	scrollerObstacleDimension.setMinY(250 + rand() % (388 - static_cast<int>(scrollerObstacleDimension.getImgHeight()) - 250));
 	isDeadly = false;
 	isBeingDrawn = false;
 }

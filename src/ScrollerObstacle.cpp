@@ -23,7 +23,7 @@ void ScrollerObstacle::draw(double obstacleIncrementalValue)
 	if (scrollerObstacleDimension.getMaxX() < 0)
 	{
 		isBeingDrawn = false;
-		scrollerObstacleDimension.setMinX(800);
+		resetXAndYValues();
 	}
 	else
 		al_draw_bitmap(scrollerObstacleBitmap, scrollerObstacleDimension.getMinX(), 
@@ -45,4 +45,10 @@ bool ScrollerObstacle::getIsDeadly()
 bool ScrollerObstacle::getIsBeingDrawn()
 {
 	return isBeingDrawn;
+}
+
+void ScrollerObstacle::resetXAndYValues()
+{
+	scrollerObstacleDimension.setMinY(250 + rand() % (388 - static_cast<int>(scrollerObstacleDimension.getImgHeight()) - 250));
+	scrollerObstacleDimension.setMinX(800);
 }

@@ -23,7 +23,7 @@ GameScreen::GameScreen()
 GameScreen::~GameScreen()
 {
 	delete userPlayer;
-	delete font;
+	al_destroy_font(font);
 }
  
 void GameScreen::loadContent()
@@ -67,7 +67,7 @@ void GameScreen::updateContent(ALLEGRO_EVENT ev)
 		if(imageXValue < -1600)
 		{
 			imageXValue = 0;
-			if(timeIncrementaleValue <= 5)
+			if(timeIncrementaleValue <= 8)
 			{
 				timeIncrementaleValue = timeIncrementaleValue + 0.5;
 			}

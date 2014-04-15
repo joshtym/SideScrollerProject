@@ -25,7 +25,7 @@ void DeathScreen::loadContent()
 void DeathScreen::unloadContent()
 {
 	al_destroy_bitmap(bitmap);
-	delete font;
+	al_destroy_font(font);
 }
 
 void DeathScreen::updateContent(ALLEGRO_EVENT ev)

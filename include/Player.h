@@ -25,6 +25,8 @@ class Player
 		void setIsOnPlatform(bool);
 		void setFloorLevel(double);
 		double setStageSpeed(double);
+		void addMomentium(int);
+		void applyMomentium();
 		
 		
 	private:
@@ -43,6 +45,7 @@ class Player
 		int lastXPosition;
 		bool onPlatform;
 		double stageSpeed = 0;
+		int momentium;
 };
 #endif
  

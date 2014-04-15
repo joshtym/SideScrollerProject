@@ -1,4 +1,5 @@
 #include "Player.h"
+#include <iostream>
 
 Player::Player()
 {
@@ -13,7 +14,7 @@ Player::Player()
 	stageFloor = 388;
 	jumpCounter = 0;
 	lastXPosition = 0;
-	
+	momentium = 0;
 }
  
 Player::~Player()
@@ -48,7 +49,7 @@ void Player::movePlayer(ALLEGRO_EVENT e)
 		case ALLEGRO_KEY_D:
 			playerAnimation.getIsActive() = true;
 			playerDimensions.setDirection(Direction::RIGHT);
-			playerDimensions.setMinX(playerDimensions.getMinX() + moveSpeed);
+			addMomentium(+20);
 			break;
 		case ALLEGRO_KEY_SPACE:
 			playerAnimation.getIsActive() = true;
@@ -70,12 +71,36 @@ void Player::movePlayer(ALLEGRO_EVENT e)
 		case ALLEGRO_KEY_A:
 			playerAnimation.getIsActive() = true;
 			playerDimensions.setDirection(Direction::LEFT);
-			playerDimensions.setMinX(playerDimensions.getMinX() - moveSpeed);
+			addMomentium(-20);
 			break;
 		default:
 			//playerAnimation.getIsActive() = false;
-			playerDimensions.setMinX(playerDimensions.getMinX() - stageSpeed);
+			//playerDimensions.setMinX(playerDimensions.getMinX() - 15);
+			addMomentium(-1);
 			break;
+	}
+}
+
+void Player::addMomentium(int m)
+{
+	std::cout << "momentium: " << momentium << "<\n";
+	if(momentium < 45 && momentium > -45)
+		momentium += m;
+}
+
+void Player::applyMomentium()
+{
+	if(momentium > 0)
+	{
+		std::cout << "momentium: " << momentium-- << "\n";
+		playerDimensions.setMinX(playerDimensions.getMinX() + 4);
+		momentium--;
+	}
+	else if(momentium < 0)
+	{
+		std::cout << "momentium: " << momentium++ << "\n";
+		playerDimensions.setMinX(playerDimensions.getMinX() - 4);
+		momentium++;
 	}
 }
 
@@ -155,7 +180,7 @@ void Player::unloadPlayer()
 void Player::update(ALLEGRO_EVENT ev, InputManagement input)
 {
 	input.update();
-		
+	applyMomentium();
 	movePlayer(ev);
 	jumpTick();
 	gravityTick();

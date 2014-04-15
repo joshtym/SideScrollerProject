@@ -16,6 +16,7 @@ GameScreen::GameScreen()
 	playerIsDead = false;
 	score = 0;
 	timeIncrementaleValue = 1;
+	isNight = false;
 }
 
 GameScreen::~GameScreen()
@@ -29,9 +30,14 @@ void GameScreen::loadContent()
 {
 	font = al_load_ttf_font("./assets/fonts/font.ttf",62,0 );
 	if((rand() % 2 + 1)>1)
+	{
 		bitmap = al_load_bitmap("./assets/imgFiles/backdropB.bmp");
+	}
 	else
+	{
 		bitmap = al_load_bitmap("./assets/imgFiles/backdropBa.bmp");
+		isNight = true;
+	}
 	userPlayer->loadPlayer();
 	userPlatform->loadScrollerObstacle();
 
@@ -60,7 +66,7 @@ void GameScreen::updateContent(ALLEGRO_EVENT ev)
 		if(imageXValue < -1600)
 		{
 			imageXValue = 0;
-			if(timeIncrementaleValue < 7)
+			if(timeIncrementaleValue <= 5)
 			{
 				timeIncrementaleValue = timeIncrementaleValue + 0.5;
 			}
@@ -101,7 +107,8 @@ void GameScreen::draw(ALLEGRO_DISPLAY *display)
 	userPlatform ->draw();
 	oss << "Score: ";
 	oss << score;
-	al_draw_text(font, al_map_rgb(0,0,0), 525, 20,ALLEGRO_ALIGN_LEFT, oss.str().c_str());
+	if(isNight) al_draw_text(font, al_map_rgb(255,255,255), 525, 20,ALLEGRO_ALIGN_LEFT, oss.str().c_str());
+	else al_draw_text(font, al_map_rgb(0,0,0), 525, 20,ALLEGRO_ALIGN_LEFT, oss.str().c_str());
 	userPlayer->draw(display);
 	oss.str("");
 	oss.clear();

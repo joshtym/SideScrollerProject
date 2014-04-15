@@ -42,5 +42,6 @@ class GameScreen : public GameScreenInterface
 		double timeIncrementaleValue;
 		double maxSpeed;
 		double speed = 0;
+		bool isNight;
 };
 #endif

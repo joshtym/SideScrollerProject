@@ -11,10 +11,10 @@ class FireHydrant : public ScrollerObstacle
 {	
 	public:
 		///Constructs a Fire Hydrant
-		Spike();
+		FireHydrant();
 		
 		///Destructs a Fire Hydrant
-		~Spike();
+		~FireHydrant();
 
 		/// Load Scroller obstacle
 		/**

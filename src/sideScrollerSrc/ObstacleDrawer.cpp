@@ -5,6 +5,7 @@
 #include "ScrollerHole.h"
 #include "SmallBlock.h"
 #include "Spike.h"
+#include "FireHydrant.cpp"
 #include <iostream>
 
 ObstacleDrawer::ObstacleDrawer()
@@ -29,6 +30,7 @@ void ObstacleDrawer::loadObstacles()
 	obstacleInfo.push_back(new SmallBlock());
 	obstacleInfo.push_back(new HalfInvisibleBlock());
 	obstacleInfo.push_back(new Spike());
+	obstacleInfo.push_back(new FireHydrant());
 	
 	for (int i = 0; i < obstacleInfo.size(); i++)
 		obstacleInfo[i]->loadScrollerObstacle();

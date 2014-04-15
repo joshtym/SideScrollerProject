@@ -6,7 +6,7 @@ FireHydrant::FireHydrant()
 {
 	scrollerObstacleDimension.setMinX(800);
 	scrollerObstacleDimension.setMinY(250 + rand() % (388 - static_cast<int>(scrollerObstacleDimension.getImgHeight()) - 250));
-	isDeadly = true;
+	isDeadly = false;
 	isBeingDrawn = false;
 }
  

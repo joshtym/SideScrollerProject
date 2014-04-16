@@ -11,6 +11,7 @@ CollisionDetection::~CollisionDetection()
 
 bool CollisionDetection::checkForCollision(ObjectDimensions player, ObjectDimensions obj)
 {
+	// If player is technically "inside" object, return true, else, return false
 	if(!(player.getMaxX() < obj.getMinX() || player.getMinX() > obj.getMaxX()))
 		if(!(player.getMaxY() < obj.getMinY() || player.getMinY() > obj.getMaxY()))
 			return true;
@@ -20,6 +21,8 @@ bool CollisionDetection::checkForCollision(ObjectDimensions player, ObjectDimens
 
 bool CollisionDetection::checkForPlayerAtEdgeOfScreen(ObjectDimensions player)
 {
+	// Use default values for our program. May change to variable. Check
+	// if it's within the parameters of the screen
 	if (player.getMinX() < 0 || player.getMaxX() > 800 || player.getMinY() < 0 || player.getMaxY() > 600)
 		return true;
 		
@@ -28,6 +31,8 @@ bool CollisionDetection::checkForPlayerAtEdgeOfScreen(ObjectDimensions player)
 
 void CollisionDetection::fixCollision(ObjectDimensions& player, ObjectDimensions& obj)
 {
+	// Only called if there is a collision. Fix the collision on each
+	// side
 	fixCollisionLeftSide(player, obj);
 	fixCollisionRightSide(player, obj);
 	fixCollisionTopPlatform(player, obj);

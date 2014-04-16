@@ -11,6 +11,7 @@
 
 Display::Display()
 {
+	// Assign and width and height to default values
 	width = 800;
 	height = 600;
 	
@@ -27,6 +28,7 @@ Display::Display(int userGivenWidth, int userGivenHeight)
 		
 Display::~Display()
 {
+	// Destroy display and uninstall keyboard/mouse
 	al_destroy_display(display);
 	al_uninstall_keyboard();
 	al_uninstall_mouse();
@@ -36,6 +38,7 @@ void Display::initialize()
 {
 	al_init();
 	
+	// Check to make sure allegro is starting up correctly
 	if (!al_init())
 	{
 		al_show_native_message_box(0, "Error", "Error",
@@ -52,6 +55,7 @@ void Display::initialize()
 	
 	al_set_window_position(display, 100, 100);
 	
+	// Install and initialize all allegro stuff
 	al_install_keyboard();
 	al_install_mouse();
 	
@@ -71,8 +75,3 @@ int Display::getHeight() const
 {
 	return height;
 }
-
-/*ALLEGRO_DISPLAY Display::*getAllegroDisplay() const 
-{
-	return display; 
-}*/

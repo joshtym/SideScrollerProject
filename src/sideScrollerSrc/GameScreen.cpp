@@ -1,35 +1,35 @@
 #include "GameScreen.h"
-#include "BlockPlatform.h"
-#include "BusObject.h"
 #include "TitleScreen.h"
-#include "SmallBlock.h"
-#include "HalfInvisibleBlock.h"
-#include "Spike.h"
 #include "DeathScreen.h"
 
 
 GameScreen::GameScreen()
 {
+	// Create new player
 	userPlayer = new Player();
+	
+	// Assign default values
 	time = 0;
 	imageXValue = 0;
 	platformXValue = 0;
-	isPlayerDead = false;
 	score = 0;
 	timeIncrementaleValue = 1;
+	isPlayerDead = false;
 	isNight = false;
 }
 
 GameScreen::~GameScreen()
 {
 	delete userPlayer;
-	al_destroy_font(font);
 }
  
 void GameScreen::loadContent()
 {
+	// Load in font
 	font = al_load_ttf_font("./assets/fonts/font.ttf",62,0 );
-	if((rand() % 2 + 1)>1)
+	
+	// Randomly decide whether to do a night or day bitmap
+	if((rand() % 2) > 0)
 	{
 		bitmap = al_load_bitmap("./assets/imgFiles/backdropB.bmp");
 	}
@@ -39,16 +39,20 @@ void GameScreen::loadContent()
 		isNight = true;
 	}
 	
+	// Load player and obstacles
 	userPlayer->loadPlayer();
 	obstacles.loadObstacles();
-
 }
 
 void GameScreen::unloadContent()
 {
+	// Unload player, obstacles
 	userPlayer->unloadPlayer();
 	obstacles.unloadObstacles();
+	
+	// Destroy bitmap and font
 	al_destroy_bitmap(bitmap);
+	al_destroy_font(font);
 }
 
 void GameScreen::updateContent(ALLEGRO_EVENT ev)
@@ -87,15 +91,22 @@ void GameScreen::updateContent(ALLEGRO_EVENT ev)
 
 void GameScreen::draw(ALLEGRO_DISPLAY *display)
 {
+	// Draw bitmap and obstacles to the screen
 	al_draw_bitmap(bitmap, imageXValue, 0, 0);
 	obstacles.drawObstacles(timeIncrementaleValue);
+	
+	// Using string streams, draw the score. Changes dependent on night
 	oss << "Score: ";
 	oss << score;
 	if(isNight) 
 		al_draw_text(font, al_map_rgb(255,255,255), 525, 20,ALLEGRO_ALIGN_LEFT, oss.str().c_str());
 	else 
 		al_draw_text(font, al_map_rgb(0,0,0), 525, 20,ALLEGRO_ALIGN_LEFT, oss.str().c_str());
+	
+	// Draw the player last
 	userPlayer->draw(display);
+	
+	// Clear string stream
 	oss.str("");
 	oss.clear();
 	

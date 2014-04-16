@@ -83,5 +83,4 @@ void ObjectDimensions::updateValues()
 {
 	xMax = xMin + imgWidth;
 	yMax = yMin + imgHeight;
-	//std::cout << xMax << std::endl;
 }

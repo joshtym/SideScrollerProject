@@ -3,22 +3,28 @@
 
 #include "ScrollerObstacle.h"
 
-/// Class: Fire Hydrant
+/// Class Fire Hydrant inherited from ScrollerObstacle
 /**
- * Purpose: Fire Hydrant for use in game 
+ * Inherited object from ScrollerObstacle. Creates a fire hydrant
+ * with specific dimensions from the imgFiles
 **/
 class FireHydrant : public ScrollerObstacle
 {	
 	public:
-		///Constructs a Fire Hydrant
+		/// Constructor for FireHydrant
+		/**
+		 * Initializes x and y values. x will start at 800. y is
+		 * randomized so that it's near the stageFloor
+		**/
 		FireHydrant();
 		
-		///Destructs a Fire Hydrant
+		/// Destructor
 		~FireHydrant();
 
-		/// Load Scroller obstacle
+		/// Function to load obstacle
 		/**
- 		* Purpose: Loads the Fire Hydrant Obstacle assets  
+		 * Function loads image png and sets the correct dimensions
+		 * for the obstacle
 		**/
 		void loadScrollerObstacle();
 };

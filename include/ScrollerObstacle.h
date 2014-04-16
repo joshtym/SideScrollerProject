@@ -17,49 +17,49 @@ class ScrollerObstacle
 	public:
 		/// Load Scroller obstacle
 		/**
- 		* Purpose: Loads the Image file for later display   
+		 * Purpose: Loads the Image file for later display   
 		**/
 		virtual void loadScrollerObstacle() = 0;
 
 		/// Unloads Scroller obstacle
 		/**
- 		* Purpose: unloads the assets for memory freeing   
+		 * Purpose: unloads the assets for memory freeing   
 		**/
 		virtual void unloadScrollerObstacle();
 
 		/// Update Scroller obstacle
 		/**
- 		* Purpose: Updates the location on obstacle   
+		 * Purpose: Updates the location on obstacle   
 		**/
 		virtual void update(double);
 
 		/// Draw Scroller obstacle
 		/**
- 		* Purpose: Draws the Image file to screen  
+		 * Purpose: Draws the Image file to screen  
 		**/
 		virtual void draw(double);
 
 		/// Get Obstacles Dimensions
 		/**
- 		* Purpose: Gets the current dimensions for use by 			* collision detection  
+		 * Purpose: Gets the current dimensions for use by * collision detection  
 		**/
 		virtual ObjectDimensions& getCurrentDimensions();
 
 		/// Reset X And Y
 		/**
- 		* Purpose: Resets X and Y 
+		 * Purpose: Resets X and Y 
 		**/
 		void resetXAndYValues();
 
 		/// getIsDeadly
 		/**
- 		* Purpose: Returns isdeadly status 
+		 * Purpose: Returns isdeadly status 
 		**/
 		bool getIsDeadly();
 
 		/// getIsBeingDrawn
 		/**
- 		* Purpose: Returns isBeingDrawn status 
+		 * Purpose: Returns isBeingDrawn status 
 		**/
 		bool getIsBeingDrawn();
 		

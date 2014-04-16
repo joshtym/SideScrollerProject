@@ -3,22 +3,28 @@
 
 #include "ScrollerObstacle.h"
 
-/// Class: Spike
+/// Class Spike inherited from ScrollerObstacle
 /**
- * Purpose: Deadly spike for use in game 
+ * Inherited object from ScrollerObstacle. Creates a Spike
+ * with specific dimensions from the imgFiles
 **/
 class Spike : public ScrollerObstacle
 {	
 	public:
-		///Constructs a Spike
+		/// Constructor for Spike
+		/**
+		 * Initializes x and y values. x will start at 800. y is
+		 * randomized so that it's near the stageFloor
+		**/
 		Spike();
 		
-		///Destructs a Spike
+		///Destructor
 		~Spike();
 
-		/// Load Scroller obstacle
+		/// Function to load obstacle
 		/**
- 		* Purpose: Loads the Obstacle assets  
+		 * Function loads image png and sets the correct dimensions
+		 * for the obstacle
 		**/
 		void loadScrollerObstacle();
 };

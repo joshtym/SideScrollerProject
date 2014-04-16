@@ -21,16 +21,19 @@ class GameScreenInterface
 		**/
 		virtual void loadContent();
 		
+		/// Virtual function to unload content of the screen
 		/**
 		 * Unload the content of the current screen
 		**/
 		virtual void unloadContent();
 		
+		/// Virtual function to update all the content on the screen
 		/**
 		 * Update the current content dependant on the allegro event
 		**/
 		virtual void updateContent(ALLEGRO_EVENT ev);
 		
+		/// Virtual function to draw the screen
 		/**
 		 * Draw the updated content
 		**/

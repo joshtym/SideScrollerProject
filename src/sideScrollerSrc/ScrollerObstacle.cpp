@@ -1,21 +1,25 @@
-#include <iostream>
 #include <cstdlib>
-#include <ctime>
 #include "ScrollerObstacle.h"
 
 void ScrollerObstacle::unloadScrollerObstacle()
 {
+	// Destroy bitmap
 	al_destroy_bitmap(scrollerObstacleBitmap);
 }
 
 void ScrollerObstacle::update(double ScrollerObstacleXValue)
 {
+	// Update the location of the object dependent on how far it is
+	// down the screen
 	scrollerObstacleDimension.setMinX(ScrollerObstacleXValue);
 	scrollerObstacleDimension.updateValues();
 }
 
 void ScrollerObstacle::draw(double obstacleIncrementalValue)
 {
+	// Until the obstacle reaches the end of the screen, it is in a 
+	// "being drawn" state. Draw the obstacle dependent on the incremental
+	// value
 	isBeingDrawn = true;
 	
 	scrollerObstacleDimension.setMinX(scrollerObstacleDimension.getMinX() - obstacleIncrementalValue);
@@ -49,6 +53,6 @@ bool ScrollerObstacle::getIsBeingDrawn()
 
 void ScrollerObstacle::resetXAndYValues()
 {
-	scrollerObstacleDimension.setMinY(250 + rand() % (388 - static_cast<int>(scrollerObstacleDimension.getImgHeight()) - 250));
+	scrollerObstacleDimension.setMinY(300 + rand() % (388 - static_cast<int>(scrollerObstacleDimension.getImgHeight()) - 250));
 	scrollerObstacleDimension.setMinX(800);
 }

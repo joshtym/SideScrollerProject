@@ -12,6 +12,8 @@ SpriteSheet::~SpriteSheet()
 
 void SpriteSheet::update(Animation& currentAnimation)
 {
+	// Deals with updating the sprite animation dependent on time
+	// values and switch frames, and activity
 	if (currentAnimation.getIsActive())
 	{
 		frameCounter++;

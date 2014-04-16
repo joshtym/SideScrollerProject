@@ -2,6 +2,7 @@
 
 ScreenTransition::ScreenTransition()
 {
+	// Assign default values
 	transitionSpeed = 5;
 	increase = false;
 }
@@ -12,6 +13,7 @@ ScreenTransition::~ScreenTransition()
 
 void ScreenTransition::update(Animation& currentAnimation)
 {
+	// Handles the fade in and fade out screen transition
 	if (currentAnimation.getIsActive())
 	{
 		if (!increase)

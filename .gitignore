@@ -1,0 +1,12 @@
+#AllegroLib
+/libs
+
+#Executable
+/bin
+
+#objects
+/obj
+
+#Doxygen
+Doxyfile
+/html

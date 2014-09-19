@@ -1,6 +1,18 @@
 Scroller
 ==============================================
 
+Dependencies
+---------------------------------------------
+Allegro 5 libray
+
+Install using:
+sudo apt-get install liballegro5
+
+Available Platforms
+---------------------------------------------
+Currently only compiles on linux. Probably would be easy
+to make it compile on OSX or Windows
+
 Description
 ---------------------------------------------
 Simple little game that allows the player to control an animated

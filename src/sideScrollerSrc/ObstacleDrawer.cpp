@@ -6,6 +6,9 @@
 #include "SmallBlock.h"
 #include "Spike.h"
 #include "FireHydrant.cpp"
+#include <iostream>
+
+static int newVarTest = 0;
 
 ObstacleDrawer::ObstacleDrawer()
 {
@@ -61,6 +64,10 @@ void ObstacleDrawer::testForCollisionHelperFunction(Player* player, ScrollerObst
 	isCollidingWithObject = cd.checkForCollision(player->getCurrentDimensions(), obstacle->getCurrentDimensions());
 	isCollidingWithEdge = cd.checkForPlayerAtEdgeOfScreen(player->getCurrentDimensions());
 	
+	/*if (isCollidingWithObject)
+	{
+		std::cout << newVarTest++ << std::endl;
+	}*/
 	// Determine whether player should die or collision is on a platform
 	if (isCollidingWithObject)
 	{

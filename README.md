@@ -33,7 +33,7 @@ Simple controls are as follows
 Execute
 -----------------------------------------------------
 To execute this script, all you need to do is type is "./executeScript"
-This will clean the current compliation and make a new one as well as link
+This will clean the current compilation and make a new one as well as link
 the profiler to be compatible with allegro as well as run the program
 
 Notes
